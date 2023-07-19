@@ -37,3 +37,13 @@ if (code) {
     });
 }
 
+window.onSpotifyWebPlaybackSDKReady = () => {
+    // This function will be called once the Spotify Web Playback SDK is ready.
+    // Since the Spotify player initialization requires the access token, which 
+    // you obtain after the OAuth flow, you do not need to immediately initialize 
+    // the player here. Instead, you're already doing that after receiving the token.
+
+    // For now, you can log a message indicating that the SDK is ready.
+    console.log("Spotify Web Playback SDK is ready!");
+};
+

@@ -11,7 +11,7 @@ app.post('/spotify/token', async (req, res) => {  // <-- Marked this function as
 
     const clientId = process.env.CLIENT_ID;
     const clientSecret = process.env.CLIENT_SECRET;
-    const redirectUri = "https://podify-two.vercel.app/spotify/token";
+    const redirectUri = "https://podify-two.vercel.app/";
 
     let encodedData = Buffer.from(clientId + ":" + clientSecret).toString('base64');
 

@@ -1,25 +1,10 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
-const cors = require('cors');
 const fetch = require('node-fetch');
 
 const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 3000;
-const allowedOrigins = ['https://harivmasoor.github.io', 'https://podify-two.vercel.app'];
-
-app.use((req, res, next) => {
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-        res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    if (req.method === 'OPTIONS') {
-      res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-      return res.status(200).json({});
-    }
-    next();
-});
 
 app.post('/spotify/token', async (req, res) => {  // <-- Marked this function as async
     const authCode = req.body.code;

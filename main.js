@@ -1,5 +1,7 @@
 import { initializePlayer, playSong } from './spotifyPlayer.js';
 
+let player = null;
+
 document.getElementById('authorizeButton').addEventListener('click', function() {
     // Only redirect to Spotify's OAuth page.
     const clientId = "0cd96f761ce9434b9b4278b664d87591";
@@ -68,4 +70,5 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 };
 
 
-
+window.initializePlayer = initializePlayer;
+window.playSong = playSong;

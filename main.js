@@ -1,3 +1,5 @@
+import { initializePlayer, playSong } from './spotifyPlayer.js';
+
 document.getElementById('authorizeButton').addEventListener('click', function() {
     // Only redirect to Spotify's OAuth page.
     const clientId = "0cd96f761ce9434b9b4278b664d87591";
@@ -19,11 +21,19 @@ if (code) {
         },
         body: JSON.stringify({ code: code })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
-        let token = data.access_token; 
-        // Use the token for subsequent Spotify API calls, or store it for later use.
+        let token = data.access_token;
+        initializePlayer(token);
         // ... Your logic here ...
+    })
+    .catch(error => {
+        console.log("There was a problem with the fetch operation:", error.message);
     });
 }
 

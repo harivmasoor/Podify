@@ -1,11 +1,9 @@
 import { initializePlayer, playSong } from './spotifyPlayer.js';
 
-let player = null;
-
 document.getElementById('authorizeButton').addEventListener('click', function() {
     // Only redirect to Spotify's OAuth page.
     const clientId = "0cd96f761ce9434b9b4278b664d87591";
-    const redirectUri = encodeURIComponent("https://podify-two.vercel.app/spotify/token"); 
+    const redirectUri = encodeURIComponent("https://podify-two.vercel.app/"); 
     const scopes = encodeURIComponent("user-top-read app-remote-control user-modify-playback-state");
 
     window.location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scopes}`;
@@ -16,7 +14,7 @@ const code = urlParams.get('code');
 
 if (code) {  
     // If there's an authorization code, send it to your backend for token exchange.
-    fetch("https://podify-two.vercel.app/", {
+    fetch("https://podify-two.vercel.app/spotify/token", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -32,7 +30,7 @@ if (code) {
     .then(data => {
         let token = data.access_token;
         initializePlayer(token);
-        document.getElementById('authorizeButton').style.display = 'none';
+                document.getElementById('authorizeButton').style.display = 'none';
 
         // Show the player controls
         document.getElementById('playerControls').style.display = 'block';
@@ -70,5 +68,4 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 };
 
 
-window.initializePlayer = initializePlayer;
-window.playSong = playSong;
+

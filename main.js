@@ -30,12 +30,32 @@ if (code) {
     .then(data => {
         let token = data.access_token;
         initializePlayer(token);
+        document.getElementById('authorizeButton').style.display = 'none';
+
+        // Show the player controls
+        document.getElementById('playerControls').style.display = 'block';
         // ... Your logic here ...
     })
     .catch(error => {
         console.log("There was a problem with the fetch operation:", error.message);
     });
 }
+
+document.getElementById('playButton').addEventListener('click', function() {
+    // Replace with a valid Spotify URI for testing
+    let sampleTrackURI = 'spotify:track:6habFhsOp2NvshLv26DqMb';
+    playSong(sampleTrackURI);
+});
+
+document.getElementById('pauseButton').addEventListener('click', function() {
+    if (player) {
+        player.pause().then(() => {
+            console.log('Paused playback!');
+        }).catch(error => {
+            console.error('Error trying to pause the playback:', error);
+        });
+    }
+});
 
 window.onSpotifyWebPlaybackSDKReady = () => {
     // This function will be called once the Spotify Web Playback SDK is ready.
@@ -46,4 +66,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     // For now, you can log a message indicating that the SDK is ready.
     console.log("Spotify Web Playback SDK is ready!");
 };
+
+
 

@@ -4,8 +4,17 @@ const fetch = require('node-fetch');
 const cors = require('cors');
 
 const app = express();
+
 app.use(express.json());
-app.use(cors()); 
+
+const corsOptions = {
+    origin: ['https://harivmasoor.github.io', 'https://podify-two.vercel.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+  };
+  
+  app.use(cors(corsOptions));
 const PORT = process.env.PORT || 3000;
 
 app.post('/spotify/token', async (req, res) => {  // <-- Marked this function as async

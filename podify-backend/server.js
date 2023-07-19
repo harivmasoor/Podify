@@ -7,7 +7,16 @@ const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());  // Enable CORS for all routes.
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://harivmasoor.github.io');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    if (req.method === 'OPTIONS') {
+      res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+      return res.status(200).json({});
+    }
+    next();
+  });
+  
 
 app.post('/spotify/token', async (req, res) => {
     const authCode = req.body.code;

@@ -12,27 +12,29 @@ const corsOptions = {
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
-  };
-  
-  app.use(cors(corsOptions));
+};
 
-  app.use((req, res, next) => {
+app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
     res.header('Permissions-Policy', 'interest-cohort=()');
     next();
-  });
-  
-  app.use((req, res, next) => {
+});
+
+// Log for debugging (remember to comment out or remove in production)
+app.use((req, res, next) => {
     console.log('Origin:', req.headers.origin);
     next();
-  });
-  
-  app.options(('*',(req,res)) => {
+});
+
+// OPTIONS requests handler
+app.options('*', (req, res) => {
     res.header('Access-Control-Allow-Origin', 'https://harivmasoor.github.io');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.header('Access-Control-Allow-Credentials', 'true');
-    next();
-  });
+    res.sendStatus(204);  // Send HTTP 204 No Content
+});
   
 const PORT = process.env.PORT || 3000;
 

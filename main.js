@@ -1,4 +1,7 @@
-import { initializePlayer, playSong, player } from './spotifyPlayer.js';
+import { initializePlayer, playSong } from './spotifyPlayer.js';
+
+// Rest of your code...
+
 
 
 document.getElementById('authorizeButton').addEventListener('click', function() {

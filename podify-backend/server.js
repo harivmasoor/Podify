@@ -1,9 +1,11 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 const fetch = require('node-fetch');
+const cors = require('cors');
 
 const app = express();
 app.use(express.json());
+app.use(cors()); 
 const PORT = process.env.PORT || 3000;
 
 app.post('/spotify/token', async (req, res) => {  // <-- Marked this function as async

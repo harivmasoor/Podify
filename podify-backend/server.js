@@ -6,20 +6,22 @@ const fetch = require('node-fetch');
 const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 3000;
+const allowedOrigins = ['https://harivmasoor.github.io', 'https://podify-two.vercel.app'];
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://harivmasoor.github.io');
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     if (req.method === 'OPTIONS') {
       res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
       return res.status(200).json({});
     }
     next();
-  });
-  
+});
 
-  app.post('/spotify/token', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://harivmasoor.github.io');
+app.post('/spotify/token', async (req, res) => {  // <-- Marked this function as async
     const authCode = req.body.code;
 
     const clientId = process.env.CLIENT_ID;
@@ -48,6 +50,7 @@ app.use((req, res, next) => {
         res.status(500).json({ error: "Failed to exchange Spotify authorization code" });
     }
 });
+
 app.get('/', (req, res) => {
     res.send('Server is up and running!');
 });

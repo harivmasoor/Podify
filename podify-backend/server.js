@@ -18,7 +18,8 @@ app.use((req, res, next) => {
   });
   
 
-app.post('/spotify/token', async (req, res) => {
+  app.post('/spotify/token', (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://harivmasoor.github.io');
     const authCode = req.body.code;
 
     const clientId = process.env.CLIENT_ID;

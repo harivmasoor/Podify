@@ -2,7 +2,7 @@ document.getElementById('authorizeButton').addEventListener('click', function() 
     // Only redirect to Spotify's OAuth page.
     const clientId = "0cd96f761ce9434b9b4278b664d87591";
     const redirectUri = encodeURIComponent("https://harivmasoor.github.io/Podify/"); 
-    const scopes = encodeURIComponent("user-top-read");
+    const scopes = encodeURIComponent("user-top-read app-remote-control user-modify-playback-state");
 
     window.location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scopes}`;
 });

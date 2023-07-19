@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-const token = 'AQA6fBjezAo9Iz0qbvI8lPi9K5K_rcIlFfP4yVhbxIU_m0czW5kLlqqkZSDjfibqaP5-BqrLtkqUo_132q29u6HGbvXMEC2oVnlXnPJdgTXZ_MZ_LgaoaK5K3YJK3b8LIVPYqTM9E2wk57zBTBD9QMOIJR8ez3uo-hXx2g4t5dTs5pNoUt9wJpGA8P4QUHoSyS7WERhXCLg';  // get this from the earlier token exchange
+const token = 'AQD73u5gztfHBdXXF4G2XK8TcuIwIpLJfP-CZ8QxL59vwYM0p7x7dt8b7QmtF_co-zV_ok4hahzDJQ0y0sZWOYxqtkKN1uML3yfQNHKoAeFL2xAqNzC3f5U4NVNnXORAsgClahZ0vy1ygKf1LPBn5pyvkh5YskZSYdTEp4CRvnMV43fJjHet4vYSbzUtMbZ77COb0qA7eGc';  // get this from the earlier token exchange
 const trackId = '6habFhsOp2NvshLv26DqMb';  // replace with the ID of Despacito or any song
 
 fetch("https://api.spotify.com/v1/me/player/play", {

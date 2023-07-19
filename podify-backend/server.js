@@ -15,6 +15,25 @@ const corsOptions = {
   };
   
   app.use(cors(corsOptions));
+
+  app.use((req, res, next) => {
+    res.header('Permissions-Policy', 'interest-cohort=()');
+    next();
+  });
+  
+  app.use((req, res, next) => {
+    console.log('Origin:', req.headers.origin);
+    next();
+  });
+  
+  app.options(('*',(req,res)) => {
+    res.header('Access-Control-Allow-Origin', 'https://harivmasoor.github.io');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    next();
+  });
+  
 const PORT = process.env.PORT || 3000;
 
 app.post('/spotify/token', async (req, res) => {  // <-- Marked this function as async
@@ -46,6 +65,8 @@ app.post('/spotify/token', async (req, res) => {  // <-- Marked this function as
         res.status(500).json({ error: "Failed to exchange Spotify authorization code" });
     }
 });
+
+
 
 app.get('/', (req, res) => {
     res.send('Server is up and running!');

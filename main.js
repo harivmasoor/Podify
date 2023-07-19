@@ -1,4 +1,5 @@
-import { initializePlayer, playSong } from './spotifyPlayer.js';
+import { initializePlayer, playSong, player } from './spotifyPlayer.js';
+
 
 document.getElementById('authorizeButton').addEventListener('click', function() {
     // Only redirect to Spotify's OAuth page.

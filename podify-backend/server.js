@@ -38,6 +38,9 @@ app.post('/spotify/token', async (req, res) => {
         res.status(500).json({ error: "Failed to exchange Spotify authorization code" });
     }
 });
+app.get('/', (req, res) => {
+    res.send('Server is up and running!');
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

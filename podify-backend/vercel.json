@@ -1,0 +1,22 @@
+{
+    "headers": [
+      {
+        "source": "/spotify/token",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "https://harivmasoor.github.io"
+          },
+          {
+            "key": "Access-Control-Allow-Headers",
+            "value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+          },
+          {
+            "key": "Access-Control-Allow-Methods",
+            "value": "GET, POST, PUT, DELETE"
+          }
+        ]
+      }
+    ]
+  }
+  

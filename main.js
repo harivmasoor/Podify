@@ -19,7 +19,7 @@ const code = urlParams.get('code');
 if (code) {  
     // If there's an authorization code, send it to your backend for token exchange.
     fetch("https://podify-backend.vercel.app/spotify/token", {
-        method: 'GET',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },

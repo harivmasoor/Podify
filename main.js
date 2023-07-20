@@ -6,7 +6,8 @@ import { initializePlayer, playSong } from './spotifyPlayer.js';
 
 document.getElementById('authorizeButton').addEventListener('click', function() {
     // Only redirect to Spotify's OAuth page.
-    const clientId = "0cd96f761ce9434b9b4278b664d87591";
+    const clientId = process.env.CLIENT_ID;
+    const clientSecret = process.env.CLIENT_SECRET;
     const redirectUri = encodeURIComponent("https://harivmasoor.github.io/Podify/"); 
     const scopes = encodeURIComponent("user-top-read app-remote-control user-modify-playback-state");
 
@@ -22,7 +23,7 @@ if (code) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          'Authorization': 'Basic ' + btoa(CLIENT_ID + ':' + CLIENT_SECRET)
+          'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
         },
         body: 'grant_type=client_credentials'
       })

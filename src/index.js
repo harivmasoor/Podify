@@ -1,6 +1,6 @@
 // Define your Spotify API Client ID
 const clientId = '0cd96f761ce9434b9b4278b664d87591';
-const redirectUri = 'https://harivmasoor.github.io/Podify/';
+const redirectUri = 'https://harivmasoor.github.io/Podify';
 
 // Handle the login button click event
 document.getElementById('loginButton').addEventListener('click', () => {

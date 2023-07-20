@@ -9,7 +9,7 @@ document.getElementById('authorizeButton').addEventListener('click', function() 
     const clientId ="0cd96f761ce9434b9b4278b664d87591"
     const clientSecret ="ad546d7cc4534f2bb3af33d007a8e22a"
     const redirectUri = encodeURIComponent("https://harivmasoor.github.io/Podify/"); 
-    const scopes = encodeURIComponent("user-read-private user-top-read app-remote-control");
+    const scopes = encodeURIComponent("user-read-private user-top-read streaming");
 
 
     window.location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scopes}`;

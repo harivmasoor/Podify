@@ -2,7 +2,7 @@ import { initializePlayer, playSong } from './spotifyPlayer.js';
 
 // Constants
 const clientId = "0cd96f761ce9434b9b4278b664d87591";
-const redirectUri = encodeURIComponent("https://harivmasoor.github.io/Podify/"); 
+const redirectUri = encodeURIComponent("https://harivmasoor.github.io/Podify"); 
 const scopes = encodeURIComponent("user-read-private user-top-read streaming");
 
 document.getElementById('authorizeButton').addEventListener('click', function() {

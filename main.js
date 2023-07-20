@@ -23,7 +23,7 @@ if (code) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
+          'Authorization': 'Basic ' + btoa("0cd96f761ce9434b9b4278b664d87591" + ':' + "ad546d7cc4534f2bb3af33d007a8e22a")
         },
         body: 'grant_type=client_credentials'
       })

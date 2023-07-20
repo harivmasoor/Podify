@@ -18,13 +18,14 @@ const code = urlParams.get('code');
 
 if (code) {  
     // If there's an authorization code, send it to your backend for token exchange.
-    fetch("https://podify-backend.vercel.app/spotify/token", {
+    fetch("https://accounts.spotify.com/api/token", {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': 'Basic ' + btoa(CLIENT_ID + ':' + CLIENT_SECRET)
         },
-        body: JSON.stringify({ code: code })
-    })
+        body: 'grant_type=client_credentials'
+      })
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');

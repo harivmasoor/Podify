@@ -1,14 +1,10 @@
 // Define your Spotify API Client ID
 const clientId = '0cd96f761ce9434b9b4278b664d87591';
-const redirectUri = 'https://harivmasoor.github.io/Podify';
 
 // Handle the login button click event
 document.getElementById('loginButton').addEventListener('click', () => {
-  // Create the authorization URL
-  const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}`;
-
-  // Redirect the user to the authorization URL
-  window.location.href = authUrl;
+  // Redirect to the backend /login endpoint to handle Spotify authorization
+  window.location.href = 'http://localhost:5001/login';  // replace with your backend URL if it's not running locally
 });
 
 // Process the redirected URL after the user logs in
@@ -29,7 +25,7 @@ window.addEventListener('load', () => {
       expires_in: expiresIn,
     });
 
-    // Call additional functions or perform additional tasks here
+    // Fetch and display the user's Spotify profile
     getUserProfile(accessToken);
   } else {
     // Call additional functions or perform additional tasks here
@@ -44,7 +40,7 @@ function getUserProfile(accessToken) {
     'Content-Type': 'application/json',
   };
 
-  // Make a GET request to the Spotify API
+  // Make a GET request to the Spotify API to get user profile details
   fetch('https://api.spotify.com/v1/me', {
     headers: headers,
   })
@@ -53,7 +49,7 @@ function getUserProfile(accessToken) {
       // Extract the username from the response data
       const username = data.display_name;
 
-      // Render the username on the webpage
+      // Display the username on the webpage
       renderUsername(username);
     })
     .catch(error => {
@@ -61,8 +57,9 @@ function getUserProfile(accessToken) {
     });
 }
 
-// Function to render the username on the webpage
+// Function to display the username on the webpage
 function renderUsername(username) {
   const usernameElement = document.getElementById('username');
   usernameElement.textContent = username;
 }
+

@@ -50,3 +50,9 @@ body, html {
     margin: 0;
     padding: 0;
 }
+
+#logo {
+    width: 30px;
+    height: auto;
+    float: left; /* Add this to move the logo to the left */
+}

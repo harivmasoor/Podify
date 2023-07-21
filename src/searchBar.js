@@ -72,10 +72,11 @@ function displayResults(results) {
   resultsContainer.innerHTML = '';  // Clear previous results
 
   results.forEach(result => {
-    const resultElement = document.createElement('div');
-    resultElement.className = 'searchResults';
-    resultElement.textContent = `${result.type}: ${result.name}`;
-    resultsContainer.appendChild(resultElement);
+      const resultElement = document.createElement('div');
+      resultElement.className = 'resultItem';
+      resultElement.innerHTML = `<strong>${result.type}:</strong> ${result.name}`;
+      resultsContainer.appendChild(resultElement);
   });
 }
+
 

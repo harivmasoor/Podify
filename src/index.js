@@ -3,7 +3,8 @@ import { setupSearch } from './searchBar.js';
 // Define your Spotify API Client ID
 const clientId = '0cd96f761ce9434b9b4278b664d87591';
 
-document.getElementById('loginButton').addEventListener('click', () => {
+const loginButton = document.getElementById('loginButton');  // Reference to the login button
+loginButton.addEventListener('click', () => {
   window.location.href = 'https://podify-backend.onrender.com/login';
 });
 
@@ -12,6 +13,8 @@ window.addEventListener('load', () => {
   const hashParams = new URLSearchParams(hash);
 
   if (hashParams.has('access_token')) {
+    loginButton.style.display = 'none';  // Hide the login button
+
     const accessToken = hashParams.get('access_token');
     const tokenType = hashParams.get('token_type');
     const expiresIn = hashParams.get('expires_in');

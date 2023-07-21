@@ -86,5 +86,5 @@ input:-webkit-autofill {
 
 #searchResults {
     /* ... other styles ... */
-    top: 400px;  /* Adjust this value to move the dropdown below the search input */
+    top: 325px;  /* Adjust this value to move the dropdown below the search input */
 }

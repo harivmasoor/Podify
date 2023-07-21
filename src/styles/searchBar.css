@@ -16,6 +16,10 @@
     outline: none;
     background-color: white;
 }
+#searchInput:focus {
+    box-shadow: none;
+    outline: none;
+}
 
 #searchResults {
     width: 100%;

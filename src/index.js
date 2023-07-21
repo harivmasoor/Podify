@@ -4,7 +4,7 @@ const clientId = '0cd96f761ce9434b9b4278b664d87591';
 // Handle the login button click event
 document.getElementById('loginButton').addEventListener('click', () => {
   // Redirect to the backend /login endpoint to handle Spotify authorization
-  window.location.href = 'https://podify-backend.onrender.com/login';  // replace with your backend URL if it's not running locally
+ // replace with your backend URL if it's not running locally
 });
 
 // Process the redirected URL after the user logs in

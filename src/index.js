@@ -9,7 +9,7 @@ loginButton.addEventListener('click', () => {
 });
 
 window.addEventListener('load', () => {
-  const hash = window.location.hash.substr(1);
+  const hash = window.location.hash.substring(1);
   const hashParams = new URLSearchParams(hash);
 
   if (hashParams.has('access_token')) {

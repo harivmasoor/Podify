@@ -73,7 +73,7 @@ function displayResults(results) {
 
   results.forEach(result => {
     const resultElement = document.createElement('div');
-    resultElement.className = 'search-result';
+    resultElement.className = 'searchResults';
     resultElement.textContent = `${result.type}: ${result.name}`;
     resultsContainer.appendChild(resultElement);
   });

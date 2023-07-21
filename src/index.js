@@ -29,9 +29,18 @@ window.addEventListener('load', () => {
 
     getUserProfile(accessToken);
     setupSearch(accessToken);
-    document.getElementById('searchInput').style.display = 'block'; // Show the search input
-  }
-});
+    const searchInput = document.getElementById('searchInput');
+    searchInput.style.display = 'block'; // Show the search input
+    
+    const searchResults = document.getElementById('searchResults');
+    searchInput.addEventListener('input', () => {
+      if (searchInput.value.length > 0) {
+          searchResults.style.display = 'block';  // Show the searchResults if there's content
+      } else {
+          searchResults.style.display = 'none';   // Hide the searchResults if there's no content
+      }})    
+};
+})
 
 function getUserProfile(accessToken) {
   const headers = {

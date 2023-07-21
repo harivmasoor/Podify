@@ -83,3 +83,8 @@ input:-webkit-autofill {
 .resultItem:hover {
     background-color: #f6f6f6;
 }
+
+#searchResults {
+    /* ... other styles ... */
+    top: 50px;  /* Adjust this value to move the dropdown below the search input */
+}

@@ -44,7 +44,7 @@
 }
 
 #logo {
-    width: 80px;  /* Adjust this value to your liking. I've set it to 80 pixels, which should be about 1/5 of its original size. */
+    width: 20px;  /* Adjust this value to your liking. I've set it to 80 pixels, which should be about 1/5 of its original size. */
     height: auto; /* This ensures that the aspect ratio of the image is maintained. */
 }
 

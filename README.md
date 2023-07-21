@@ -44,11 +44,11 @@ Podify leverages cutting-edge tools and platforms:
 
 **Note**:
 
-- **Friday Afternoon & Weekend**: Setup - Configure webpack, familiarize with the Canvas API, initialize Board and Cell classes, and render the initial grid.
-- **Monday**: Work on the logic of Conway's Game of Life, ensuring generation updates. If time permits, perfect canvas rendering.
-- **Tuesday**: Prioritize cell rendering on the canvas and user controls, including start, stop, reset, and cell interaction.
-- **Wednesday**: Finalize user controls, styling, color schemes, and navigation. If possible, focus on bonus features.
-- **Thursday Morning**: Deploy to GitHub pages. If there's extra time, reformat this proposal into a production README.
+- **Friday Afternoon & Weekend**: Setup - Ensure that I can get all the information I need from the Spotify API, setup my proxy backend_server in render, build out the webplayer and Spotify elements.
+- **Monday**: Works on the recorder.js integration to ensure I can capture the audio that being played back on my browser, work on the data pipeline to the Whisper API
+- **Tuesday**: Integrate the transcription piece of the website and the GPT 4 summarization piece.
+- **Wednesday**: implement emailing the summaries to the user after audio playback.
+- **Thursday Morning**: Polish up and ensure the UI is perfect, everything works as expected in github pages.
 
 ## Bonus Features
 Podify's evolutionary journey includes potential additions:

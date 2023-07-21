@@ -13,34 +13,34 @@ export function setupSearch(accessTokenValue) {
   });
 }
 
-function searchSpotify(query) {
-  if (!query) return;  // If the query is empty, don't make a request
+function searchSpotify(query, accessToken) {
+    const searchEndpoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=show,track&limit=5`;
+    const headers = {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+    };
 
-  const headers = {
-    Authorization: `Bearer ${accessToken}`,
-    'Content-Type': 'application/json',
-  };
-
-  fetch(`https://api.spotify.com/v1/search?q=${query}&type=podcast,track&limit=5`, { headers: headers })
-    .then(response => response.json())
-    .then(data => {
-      const resultsContainer = document.getElementById('searchResults');
-      let resultsHtml = '';
-      if (data.podcasts && data.podcasts.items.length) {
-        resultsHtml += '<h3>Podcasts</h3>';
-        data.podcasts.items.forEach(podcast => {
-          resultsHtml += `<p>${podcast.name}</p>`;
+    return fetch(searchEndpoint, { headers: headers })
+        .then(response => response.json())
+        .then(data => {
+            const results = [];
+            if (data.shows && data.shows.items) {
+                results.push(...data.shows.items.map(item => ({
+                    type: 'show',
+                    name: item.name,
+                })));
+            }
+            if (data.tracks && data.tracks.items) {
+                results.push(...data.tracks.items.map(item => ({
+                    type: 'track',
+                    name: item.name,
+                })));
+            }
+            return results;
+        })
+        .catch(error => {
+            console.error('Error searching Spotify:', error);
+            return [];
         });
-      }
-      if (data.tracks && data.tracks.items.length) {
-        resultsHtml += '<h3>Songs</h3>';
-        data.tracks.items.forEach(track => {
-          resultsHtml += `<p>${track.name} by ${track.artists.map(artist => artist.name).join(', ')}</p>`;
-        });
-      }
-      resultsContainer.innerHTML = resultsHtml;
-    })
-    .catch(error => {
-      console.error('Error fetching search results:', error);
-    });
 }
+

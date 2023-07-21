@@ -4,8 +4,14 @@ export function setupSearch(accessTokenValue) {
   accessToken = accessTokenValue;
 
   const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
   let timer;
   searchInput.addEventListener('input', (e) => {
+    if (e.target.value) {
+      searchResults.style.border = '1px solid #ccc';  // Add border
+  } else {
+      searchResults.style.border = 'none';  // Remove border
+  }
     clearTimeout(timer);
     timer = setTimeout(() => {
       searchSpotify(e.target.value);

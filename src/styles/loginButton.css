@@ -56,3 +56,9 @@ body, html {
     height: auto;
     float: left; /* Add this to move the logo to the left */
 }
+
+#username {
+    font-size: 24px;  /* Adjust to your preference */
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}

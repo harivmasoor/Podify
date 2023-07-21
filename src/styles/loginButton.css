@@ -1,3 +1,10 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100vh;  /* This will ensure the main content fills the screen height */
+}
+
 /* Styles for the login button */
 #loginButton {
     background-color: #1DB954; /* Spotify green color */
@@ -19,7 +26,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 80vh;  /* Adjusts the height */
     gap: 20px;
     justify-content: flex-start; /* Changes from center to start */
     padding-top: 10%; /* Adds a top padding to move the content up */

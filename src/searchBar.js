@@ -56,6 +56,9 @@ async function searchSpotify(query) {
         name: item.name,
       })));
     }
+
+    // Call the displayResults function with the search results
+    displayResults(results);
     
     return results;
   } catch (error) {
@@ -63,15 +66,16 @@ async function searchSpotify(query) {
     return [];
   }
 }
-function displayResults(results) {
-    const resultsContainer = document.getElementById('searchResults');
-    resultsContainer.innerHTML = '';  // Clear previous results
 
-    results.forEach(result => {
-        const resultElement = document.createElement('div');
-        resultElement.className = 'search-result';
-        resultElement.textContent = `${result.type}: ${result.name}`;
-        resultsContainer.appendChild(resultElement);
-    });
+function displayResults(results) {
+  const resultsContainer = document.getElementById('searchResults');
+  resultsContainer.innerHTML = '';  // Clear previous results
+
+  results.forEach(result => {
+    const resultElement = document.createElement('div');
+    resultElement.className = 'search-result';
+    resultElement.textContent = `${result.type}: ${result.name}`;
+    resultsContainer.appendChild(resultElement);
+  });
 }
 

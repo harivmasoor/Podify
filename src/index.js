@@ -55,3 +55,7 @@ function renderUsername(username) {
   usernameElement.textContent = username;
 }
 
+document.getElementById('searchInput').addEventListener('focus', (event) => {
+  event.preventDefault();
+});
+

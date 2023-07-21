@@ -44,6 +44,10 @@
     background-color: #f6f6f6;
 }
 
+#searchInput, #searchResults {
+    font-family: 'Poppins', sans-serif;
+}
+
 #loginButton {
     background-color: #1DB954; /* Spotify green color */
     border: none;

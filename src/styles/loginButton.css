@@ -21,4 +21,14 @@
     justify-content: center;
     height: 80vh;  /* Adjusts the height */
     gap: 20px;
+    justify-content: flex-start; /* Changes from center to start */
+    padding-top: 10%; /* Adds a top padding to move the content up */
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: currentColor;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
 }

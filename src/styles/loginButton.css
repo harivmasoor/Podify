@@ -1,8 +1,10 @@
 main {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     justify-content: space-evenly;
     height: 100vh;  /* This will ensure the main content fills the screen height */
+    padding-top: 5%; 
 }
 
 /* Styles for the login button */

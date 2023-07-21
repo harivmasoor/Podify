@@ -63,4 +63,15 @@ async function searchSpotify(query) {
     return [];
   }
 }
+function displayResults(results) {
+    const resultsContainer = document.getElementById('searchResults');
+    resultsContainer.innerHTML = '';  // Clear previous results
+
+    results.forEach(result => {
+        const resultElement = document.createElement('div');
+        resultElement.className = 'search-result';
+        resultElement.textContent = `${result.type}: ${result.name}`;
+        resultsContainer.appendChild(resultElement);
+    });
+}
 

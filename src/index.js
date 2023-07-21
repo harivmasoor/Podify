@@ -18,6 +18,8 @@ window.addEventListener('load', () => {
     const accessToken = hashParams.get('access_token');
     const tokenType = hashParams.get('token_type');
     const expiresIn = hashParams.get('expires_in');
+    const searchContainer = document.getElementById('search-container');
+    searchContainer.style.display = 'block';
 
     console.log({
       access_token: accessToken,

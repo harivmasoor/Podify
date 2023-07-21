@@ -1,0 +1,24 @@
+/* Styles for the login button */
+#loginButton {
+    background-color: #1DB954; /* Spotify green color */
+    border: none;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+#loginButton:hover {
+    background-color: #1AA34A; /* A slightly darker green for hover effect */
+}
+
+#center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;  /* Adjusts the height */
+    gap: 20px;
+}

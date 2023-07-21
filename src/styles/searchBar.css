@@ -26,6 +26,7 @@
     background-color: #fff;
     z-index: 10;
     display: none;  /* Initially hidden */
+    display: block;
 }
 
 #searchResults div {
@@ -47,7 +48,3 @@
     height: auto; /* This ensures that the aspect ratio of the image is maintained. */
 }
 
-#searchResults {
-    /* ... (rest of the existing styles) ... */
-    display: block;  /* This ensures that the search results container is always visible. */
-}

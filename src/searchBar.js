@@ -25,7 +25,7 @@ async function refreshToken() {
 }
 
 async function searchSpotify(query) {
-  const searchEndpoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=show,track&limit=5`;
+  const searchEndpoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=show,episode,track&limit=5`;
   const headers = {
     'Authorization': `Bearer ${accessToken}`,
     'Content-Type': 'application/json',

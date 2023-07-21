@@ -30,7 +30,7 @@ window.addEventListener('load', () => {
     getUserProfile(accessToken);
     setupSearch(accessToken);
     document.getElementById('searchInput').style.display = 'block'; // Show the search input
-    document.getElementById('searchResults').style.display = 'block';
+    // document.getElementById('searchResults').style.display = 'block';
   }
 });
 

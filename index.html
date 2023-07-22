@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./dist/main.css" />
     <link rel="stylesheet" href="src/styles/searchBar.css" />
     <link rel="stylesheet" href="src/styles/loginButton.css" />
+    <link rel="stylesheet" href="src/styles/webPlayer.css" />
     <link rel="icon" type="image/png" href="assets/podify.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
     <title>Podify</title>
@@ -28,7 +29,17 @@
         <div id="search-container">
             <input type="text" id="searchInput" placeholder="Search for podcasts or songs..."/>
             <div id="searchResults"></div>
-        </div>        
+        </div> 
+        <div id="webPlayer">
+            <div class="playerControls">
+                <button id="rewind">⏪</button>
+                <button id="playPause">▶️</button>
+                <button id="fastForward">⏩</button>
+            </div>
+            <div class="nowPlaying">
+                <span id="trackName"></span>
+            </div>
+        </div>       
     </main>
     <script src="src/searchBar.js"></script>
     <script src="./dist/main.js"></script>

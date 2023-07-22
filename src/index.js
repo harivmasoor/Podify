@@ -1,4 +1,5 @@
 import { setupSearch } from './searchBar.js';
+import { setupWebPlayer } from './webPlayer.js';
 
 // Define your Spotify API Client ID
 const clientId = '0cd96f761ce9434b9b4278b664d87591';
@@ -38,7 +39,8 @@ window.addEventListener('load', () => {
           searchResults.style.display = 'block';  // Show the searchResults if there's content
       } else {
           searchResults.style.display = 'none';   // Hide the searchResults if there's no content
-      }})    
+      }})
+      setupWebPlayer(accessToken);    
 };
 })
 
@@ -59,6 +61,17 @@ function getUserProfile(accessToken) {
     });
 }
 
+player.addListener('player_state_changed', state => {
+  console.log(state);
+  isPlaying = !state.paused;
+  if (isPlaying) {
+      document.getElementById('playPause').textContent = '⏸️';
+  } else {
+      document.getElementById('playPause').textContent = '▶️';
+  }
+});
+
+
 function renderUsername(username) {
   const usernameElement = document.getElementById('username');
   usernameElement.textContent = username;
@@ -67,4 +80,40 @@ function renderUsername(username) {
 document.getElementById('searchInput').addEventListener('focus', (event) => {
   event.preventDefault();
 });
+
+document.getElementById('playPause').addEventListener('click', togglePlay);
+document.getElementById('rewind').addEventListener('click', rewindTrack);
+document.getElementById('fastForward').addEventListener('click', fastForwardTrack);
+
+let isPlaying = false;  // To track playback state
+
+function togglePlay() {
+    if (isPlaying) {
+        player.pause().then(() => {
+            console.log('Paused Playback');
+            isPlaying = false;
+            // Update your playPause button's icon to "play" here
+            document.getElementById('playPause').textContent = '▶️';
+        });
+    } else {
+        player.resume().then(() => {
+            console.log('Resumed Playback');
+            isPlaying = true;
+            // Update your playPause button's icon to "pause" here
+            document.getElementById('playPause').textContent = '⏸️';
+        });
+    }
+}
+
+function rewindTrack() {
+    player.seek(player.getCurrentState().position - 15000);  // rewinds 15 seconds
+}
+
+function fastForwardTrack() {
+    player.seek(player.getCurrentState().position + 15000);  // fast forwards 15 seconds
+}
+
+document.getElementById('webPlayer').style.display = 'block';
+
+
 

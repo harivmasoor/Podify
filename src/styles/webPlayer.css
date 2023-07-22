@@ -1,0 +1,41 @@
+#webPlayer {
+    display: none; /* Initially hidden */
+    margin-top: 20px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+}
+
+.playerControls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.playerControls button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #1DB954; /* Spotify green color */
+    transition: color 0.3s;
+}
+
+.playerControls button:hover {
+    color: #1AA34A; /* A slightly darker green for hover effect */
+}
+
+.nowPlaying {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 18px;
+}
+
+#trackName {
+    font-weight: 600;
+}

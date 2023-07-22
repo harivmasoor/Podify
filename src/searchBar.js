@@ -52,13 +52,22 @@ async function searchSpotify(query) {
     if (data.shows && data.shows.items) {
       results.push(...data.shows.items.map(item => ({
         type: 'show',
+        id: item.id,  // Include the ID
         name: item.name,
-      })));
+    })));
     }
     
     if (data.tracks && data.tracks.items) {
       results.push(...data.tracks.items.map(item => ({
         type: 'track',
+        id: item.id,  // Include the ID
+        name: item.name,
+      })));
+    }
+    if (data.episodes && data.episodes.items) {
+      results.push(...data.episodes.items.map(item => ({
+        type: 'episode',
+        id: item.id,  // Include the ID
         name: item.name,
       })));
     }
@@ -80,9 +89,12 @@ function displayResults(results) {
   results.forEach(result => {
       const resultElement = document.createElement('div');
       resultElement.className = 'resultItem';
+      resultElement.dataset.id = result.id;  // Add this line to store the Spotify ID on the element
+      resultElement.dataset.type = result.type;  // And this one to store the type (track or show)
       resultElement.innerHTML = `<strong>${result.type}:</strong> ${result.name}`;
       resultsContainer.appendChild(resultElement);
   });
 }
+
 
 

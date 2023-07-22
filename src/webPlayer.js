@@ -22,6 +22,7 @@ async function playItem(itemId, itemType) {
     };
 
     try {
+        console.log("Attempting to play", endpoint, body);
         const response = await fetch(endpoint, {
             method: 'PUT',
             headers: headers,
@@ -29,6 +30,8 @@ async function playItem(itemId, itemType) {
         });
 
         if (!response.ok) {
+            const errorBody = await response.json();
+            console.error("Play response:", errorBody);
             throw new Error(`Unable to play ${itemType}: ${response.statusText}`);
         }
 

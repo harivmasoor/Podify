@@ -38,5 +38,23 @@ async function playItem(itemId, itemType) {
         console.log(`Successfully started playing ${itemType} with ID: ${itemId}`);
     } catch (error) {
         console.error('Error in web player:', error);
+        handlePlaybackError(error);
+    }
+}
+
+export function checkWebPlaybackSDKCompatibility() {
+    if (window.Spotify && Spotify.Player) {
+        return Spotify.Player.isSupported();
+    }
+    return false;
+}
+
+function handlePlaybackError(error) {
+    console.error('Web Playback SDK error:', error);
+    // You can have custom messages or actions based on specific errors.
+    if(error.message.includes("Playback cannot be started from this context")) {
+        alert('Cannot play this item. Please choose another.');
+    } else {
+        alert('Playback error. Please try again later.');
     }
 }

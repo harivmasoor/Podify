@@ -1,5 +1,5 @@
 import { setupSearch } from './searchBar.js';
-import { setupWebPlayer } from './webPlayer.js';
+import { setupWebPlayer, checkWebPlaybackSDKCompatibility } from './webPlayer.js';
 
 const loginButton = document.getElementById('loginButton');  // Reference to the login button
 loginButton.addEventListener('click', () => {
@@ -29,6 +29,11 @@ window.addEventListener('load', () => {
 
         getUserProfile(accessToken);
         setupSearch(accessToken);
+        if (checkWebPlaybackSDKCompatibility()) {
+          setupWebPlayer(accessToken);
+      } else {
+          alert("Device not suitable for playback");
+      }      
         const searchInput = document.getElementById('searchInput');
         searchInput.style.display = 'block'; // Show the search input
         

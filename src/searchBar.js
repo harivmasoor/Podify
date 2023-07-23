@@ -48,25 +48,48 @@ async function searchSpotify(query) {
     }
 
     const data = await response.json();
-    const results = [];
     
+    let trackResults = [];
+    let artistResults = [];
+    let episodeResults = [];
+
+    // Extract and structure data for tracks
     if (data.tracks && data.tracks.items) {
-      results.push(...data.tracks.items.map(item => ({
+      trackResults = data.tracks.items.map(item => ({
           type: 'track',
           id: item.id,
-          name: item.name, // Adjusted this line to include artist name
-          image: item.album.images[0].url, // Add image URL
-      })));
-  }
-  
-  if (data.episodes && data.episodes.items) {
-    results.push(...data.episodes.items.map(item => ({
-        type: 'episode',
-        id: item.id,
-        name: item.name,  // Include show name
-        image: item.images[0].url,  // Add image URL
-    })));
-}
+          name: item.name,
+          image: item.album.images[0].url,
+          popularity: item.popularity
+      }));
+    }
+
+    // Extract and structure data for artists
+    if (data.artists && data.artists.items) {
+      artistResults = data.artists.items.map(item => ({
+          type: 'artist',
+          id: item.id,
+          name: item.name,
+          image: item.images[0] ? item.images[0].url : null,
+          popularity: item.popularity
+      }));
+    }
+    
+    if (data.episodes && data.episodes.items) {
+      episodeResults = data.episodes.items.map(item => ({
+          type: 'episode',
+          id: item.id,
+          name: item.name,
+          image: item.images[0].url
+      }));
+    }
+
+    // Sort tracks and artists by popularity
+    trackResults.sort((a, b) => b.popularity - a.popularity);
+    artistResults.sort((a, b) => b.popularity - a.popularity);
+
+    // Combine the results in desired order
+    const results = [...trackResults, ...artistResults, ...episodeResults];
 
     // Call the displayResults function with the search results
     displayResults(results);
@@ -77,6 +100,7 @@ async function searchSpotify(query) {
     return [];
   }
 }
+
 
 function displayResults(results) {
   const resultsContainer = document.getElementById('searchResults');

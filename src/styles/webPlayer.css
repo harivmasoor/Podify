@@ -1,5 +1,5 @@
 #webPlayer {
-    display: none; /* Initially hidden */
+    display: flex; /* Initially hidden */
     margin-top: 20px;
     width: 100%;
     border: 1px solid #ccc;

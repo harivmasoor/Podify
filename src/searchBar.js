@@ -31,7 +31,7 @@ async function refreshToken() {
 }
 
 async function searchSpotify(query) {
-  const searchEndpoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=show,episode,track&limit=5`;
+  const searchEndpoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=artist,show,episode,track&limit=5`;
   const headers = {
     'Authorization': `Bearer ${accessToken}`,
     'Content-Type': 'application/json',
@@ -49,28 +49,23 @@ async function searchSpotify(query) {
     const data = await response.json();
     const results = [];
     
-    if (data.shows && data.shows.items) {
-      results.push(...data.shows.items.map(item => ({
-        type: 'show',
-        id: item.id,  // Include the ID
-        name: item.name,
-    })));
-    }
-    
     if (data.tracks && data.tracks.items) {
       results.push(...data.tracks.items.map(item => ({
-        type: 'track',
-        id: item.id,  // Include the ID
-        name: item.name,
+          type: 'track',
+          id: item.id,
+          name: item.artists[0].name + ' - ' + item.name, // Adjusted this line to include artist name
+          image: item.album.images[0].url, // Add image URL
       })));
-    }
-    if (data.episodes && data.episodes.items) {
-      results.push(...data.episodes.items.map(item => ({
+  }
+  
+  if (data.episodes && data.episodes.items) {
+    results.push(...data.episodes.items.map(item => ({
         type: 'episode',
-        id: item.id,  // Include the ID
-        name: item.name,
-      })));
-    }
+        id: item.id,
+        name: item.show.name + ' - ' + item.name,  // Include show name
+        image: item.images[0].url,  // Add image URL
+    })));
+}
 
     // Call the displayResults function with the search results
     displayResults(results);
@@ -87,13 +82,15 @@ function displayResults(results) {
   resultsContainer.innerHTML = '';  // Clear previous results
 
   results.forEach(result => {
-      const resultElement = document.createElement('div');
-      resultElement.className = 'resultItem';
-      resultElement.dataset.id = result.id;  // Add this line to store the Spotify ID on the element
-      resultElement.dataset.type = result.type;  // And this one to store the type (track or show)
-      resultElement.innerHTML = `<strong>${result.type}:</strong> ${result.name}`;
-      resultsContainer.appendChild(resultElement);
-  });
+    const resultElement = document.createElement('div');
+    resultElement.className = 'resultItem';
+    resultElement.dataset.id = result.id; 
+    resultElement.dataset.type = result.type;
+    resultElement.dataset.name = result.name;  // Store the name for later retrieval
+    resultElement.dataset.image = result.image;  // Store the image URL for later retrieval
+    resultElement.innerHTML = result.name;
+    resultsContainer.appendChild(resultElement);
+});
 }
 
 

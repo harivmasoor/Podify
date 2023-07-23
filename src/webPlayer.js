@@ -40,7 +40,14 @@ async function playItem(itemId, itemType) {
         console.error('Error in web player:', error);
         handlePlaybackError(error);
     }
+    const selectedItem = Array.from(document.getElementById('searchResults').children).find(item => item.dataset.id === itemId);
+    if (selectedItem) {
+        document.getElementById('currentImage').src = selectedItem.dataset.image;
+        document.getElementById('currentTitle').textContent = selectedItem.dataset.name;
+    }
 }
+
+
 let spotifySDKReady = new Promise((resolve) => {
     window.onSpotifyWebPlaybackSDKReady = () => {
         resolve();

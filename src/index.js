@@ -1,3 +1,5 @@
+// Description: The main JavaScript file for the Podify web app.
+
 import { setupSearch } from './searchBar.js';
 import { setupWebPlayer, checkWebPlaybackSDKCompatibility } from './webPlayer.js';
 
@@ -138,6 +140,17 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
     player.addListener('player_state_changed', state => {
         console.log(state);
+        if (state) {
+            const trackDuration = state.track_window.current_track.duration_ms;
+            const currentPosition = state.position;
+    
+            document.getElementById('seekBar').max = trackDuration;
+            document.getElementById('seekBar').value = currentPosition;
+    
+            // Update the time display
+            document.getElementById('currentTime').textContent = formatTime(currentPosition);
+            document.getElementById('totalTime').textContent = formatTime(trackDuration);
+        }
         isPlaying = !state.paused;
         if (isPlaying) {
             document.getElementById('playPause').textContent = '⏸️';
@@ -173,6 +186,20 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 };
 
 document.getElementById('webPlayer').style.display = 'block';
+
+document.getElementById('seekBar').addEventListener('input', (e) => {
+    const newPosition = e.target.value; // This will be in milliseconds
+    player.seek(newPosition).then(() => {
+        console.log(`Moved to ${newPosition} ms`);
+    });
+});
+
+function formatTime(ms) {
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
 
 // Initialize the event listeners
 initializeEventListeners();

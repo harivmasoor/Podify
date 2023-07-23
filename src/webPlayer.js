@@ -1,4 +1,4 @@
- // Assuming the path to webPlayer.js is correct
+// This file contains the code for the web player.
 
 let currentAccessToken = null;
 

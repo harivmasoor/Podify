@@ -43,10 +43,7 @@ async function playItem(itemId, itemType) {
 }
 
 export function checkWebPlaybackSDKCompatibility() {
-    if (window.Spotify && Spotify.Player) {
-        return Spotify.Player.isSupported();
-    }
-    return false;
+    return window.Spotify?.Player?.isSupported() ?? false;
 }
 
 function handlePlaybackError(error) {

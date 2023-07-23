@@ -35,8 +35,6 @@ window.addEventListener('load', () => {
           alert("Device not suitable for playback");
       }      
         const searchInput = document.getElementById('searchInput');
-        searchInput.style.display = 'block'; // Show the search input
-        
         const searchResults = document.getElementById('searchResults');
         searchInput.addEventListener('input', () => {
             if (searchInput.value.length > 0) {

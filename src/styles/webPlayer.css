@@ -8,6 +8,8 @@
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-family: 'Poppins', sans-serif;
+    flex-direction: column; /* Stacks the child elements vertically */
+    align-items: center;
 }
 
 .playerControls {

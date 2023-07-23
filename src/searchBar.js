@@ -49,10 +49,10 @@ async function searchSpotify(query) {
     }
 
     const data = await response.json();
-    let results = [];
     let trackResults = [];
     let artistResults = [];
     let episodeResults = [];
+    let showResults = [];
 
     // Extract and structure data for tracks
     if (data.tracks && data.tracks.items) {
@@ -85,7 +85,7 @@ async function searchSpotify(query) {
       }));
     }
     if (data.shows && data.shows.items) {
-      results.push(...data.shows.items.map(item => ({
+      showResults.push(...data.shows.items.map(item => ({
         type: 'show',
         id: item.id,
         name: item.name,
@@ -93,7 +93,7 @@ async function searchSpotify(query) {
       })));
     }
     if (data.artists && data.artists.items) {
-  results.push(...data.artists.items.map(item => ({
+  artistResults.push(...data.artists.items.map(item => ({
     type: 'artist',
     id: item.id,
     name: item.name,
@@ -107,7 +107,7 @@ async function searchSpotify(query) {
     artistResults.sort((a, b) => b.popularity - a.popularity);
 
     // Combine the results in desired order
-    results = [...trackResults, ...artistResults, ...episodeResults];
+    const results = [...showResults,...trackResults, ...artistResults, ...episodeResults];
 
     // Call the displayResults function with the search results
     displayResults(results);

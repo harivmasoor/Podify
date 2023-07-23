@@ -106,18 +106,38 @@ function displayResults(results) {
   const resultsContainer = document.getElementById('searchResults');
   resultsContainer.innerHTML = '';
 
-  results.forEach(result => {
-    const resultElement = document.createElement('div');
-    resultElement.className = 'resultItem';
-    resultElement.dataset.id = result.id;
-    resultElement.dataset.type = result.type;
-    resultElement.dataset.name = result.name;
-    resultElement.dataset.image = result.image;
-    resultElement.innerHTML = `<img src="${result.image}" alt="${result.name}"/> ${result.name}`;
-    resultElement.addEventListener('click', handleResultClick);
-    resultsContainer.appendChild(resultElement);
-  });
+  const episodeResults = results.filter(result => result.type === 'episode');
+  const trackResults = results.filter(result => result.type === 'track');
+
+  if (episodeResults.length > 0) {
+    const podHeader = document.createElement('h2');
+    podHeader.textContent = 'Pods';
+    resultsContainer.appendChild(podHeader);
+
+    episodeResults.forEach(result => appendResultToContainer(result, resultsContainer));
+  }
+
+  if (trackResults.length > 0) {
+    const bangerHeader = document.createElement('h2');
+    bangerHeader.textContent = 'Bangers';
+    resultsContainer.appendChild(bangerHeader);
+
+    trackResults.forEach(result => appendResultToContainer(result, resultsContainer));
+  }
 }
+
+function appendResultToContainer(result, container) {
+  const resultElement = document.createElement('div');
+  resultElement.className = 'resultItem';
+  resultElement.dataset.id = result.id;
+  resultElement.dataset.type = result.type;
+  resultElement.dataset.name = result.name;
+  resultElement.dataset.image = result.image;
+  resultElement.innerHTML = `<img src="${result.image}" alt="${result.name}"/> ${result.name}`;
+  resultElement.addEventListener('click', handleResultClick);
+  container.appendChild(resultElement);
+}
+
 
 async function handleResultClick(e) {
   const type = e.currentTarget.dataset.type;

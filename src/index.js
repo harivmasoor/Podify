@@ -1,52 +1,11 @@
 import { setupSearch } from './searchBar.js';
 import { setupWebPlayer, checkWebPlaybackSDKCompatibility } from './webPlayer.js';
 
-const loginButton = document.getElementById('loginButton');  // Reference to the login button
-loginButton.addEventListener('click', () => {
-    window.location.href = 'https://podify-backend.onrender.com/login';
-});
-
 let accessToken; // Move the declaration of accessToken to a higher scope
+let player;  // Declare the player variable at a scope accessible by all your functions
+let isPlaying = false;  // To track playback state
 
-window.addEventListener('load', () => {
-    const hash = window.location.hash.substring(1);
-    const hashParams = new URLSearchParams(hash);
-
-    if (hashParams.has('access_token')) {
-        loginButton.style.display = 'none';  // Hide the login button
-
-        accessToken = hashParams.get('access_token'); // Use the higher scoped accessToken
-        const tokenType = hashParams.get('token_type');
-        const expiresIn = hashParams.get('expires_in');
-        const searchContainer = document.getElementById('search-container');
-        searchContainer.style.display = 'block';
-
-        console.log({
-            access_token: accessToken,
-            token_type: tokenType,
-            expires_in: expiresIn,
-        });
-
-        getUserProfile(accessToken);
-        setupSearch(accessToken);
-        if (checkWebPlaybackSDKCompatibility()) {
-          setupWebPlayer(accessToken);
-      } else {
-          alert("Device not suitable for playback");
-      }      
-        const searchInput = document.getElementById('searchInput');
-        const searchResults = document.getElementById('searchResults');
-        searchInput.addEventListener('input', () => {
-            if (searchInput.value.length > 0) {
-                searchResults.style.display = 'block';  // Show the searchResults if there's content
-            } else {
-                searchResults.style.display = 'none';   // Hide the searchResults if there's no content
-            }
-        });
-        setupWebPlayer(accessToken);    
-    }
-});
-
+// Function to get user's Spotify profile
 function getUserProfile(token) {
     const headers = {
         Authorization: `Bearer ${token}`,
@@ -64,44 +23,13 @@ function getUserProfile(token) {
         });
 }
 
-var player;  // Declare the player variable at a scope accessible by all your functions
-
-window.onSpotifyWebPlaybackSDKReady = () => {
-    player = new Spotify.Player({
-        name: 'Your Web Player Name',
-        getOAuthToken: callback => {
-            callback(accessToken);  // Use the higher scoped accessToken
-        }
-    });
-
-    player.addListener('player_state_changed', state => {
-        console.log(state);
-        isPlaying = !state.paused;
-        if (isPlaying) {
-            document.getElementById('playPause').textContent = '⏸️';
-        } else {
-            document.getElementById('playPause').textContent = '▶️';
-        }
-    });
-
-    player.connect();
-};
-
+// Function to render the user's name
 function renderUsername(username) {
     const usernameElement = document.getElementById('username');
     usernameElement.textContent = username;
 }
 
-document.getElementById('searchInput').addEventListener('focus', (event) => {
-    event.preventDefault();
-});
-
-document.getElementById('playPause').addEventListener('click', togglePlay);
-document.getElementById('rewind').addEventListener('click', rewindTrack);
-document.getElementById('fastForward').addEventListener('click', fastForwardTrack);
-
-let isPlaying = false;  // To track playback state
-
+// Playback control functions
 function togglePlay() {
     if (isPlaying) {
         player.pause().then(() => {
@@ -126,9 +54,113 @@ function fastForwardTrack() {
     player.seek(player.getCurrentState().position + 15000);  // fast forwards 15 seconds
 }
 
+// Initialize all event listeners
+function initializeEventListeners() {
+    // Login button event
+    const loginButton = document.getElementById('loginButton');
+    loginButton.addEventListener('click', () => {
+        window.location.href = 'https://podify-backend.onrender.com/login';
+    });
+
+    // Search input events
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    searchInput.addEventListener('input', () => {
+        if (searchInput.value.length > 0) {
+            searchResults.style.display = 'block';
+        } else {
+            searchResults.style.display = 'none';
+        }
+    });
+
+    searchInput.addEventListener('focus', (event) => {
+        event.preventDefault();
+    });
+
+    // Player control events
+    document.getElementById('playPause').addEventListener('click', togglePlay);
+    document.getElementById('rewind').addEventListener('click', rewindTrack);
+    document.getElementById('fastForward').addEventListener('click', fastForwardTrack);
+}
+
+// The main code that runs when the window loads
+window.addEventListener('load', () => {
+    const hash = window.location.hash.substring(1);
+    const hashParams = new URLSearchParams(hash);
+
+    if (hashParams.has('access_token')) {
+        document.getElementById('loginButton').style.display = 'none';  // Hide the login button
+
+        accessToken = hashParams.get('access_token'); 
+        const tokenType = hashParams.get('token_type');
+        const expiresIn = hashParams.get('expires_in');
+        const searchContainer = document.getElementById('search-container');
+        searchContainer.style.display = 'block';
+
+        console.log({
+            access_token: accessToken,
+            token_type: tokenType,
+            expires_in: expiresIn,
+        });
+
+        getUserProfile(accessToken);
+        setupSearch(accessToken);
+        if (checkWebPlaybackSDKCompatibility()) {
+            setupWebPlayer(accessToken);
+        } else {
+            alert("Device not suitable for playback");
+        }
+    }
+});
+
+window.onSpotifyWebPlaybackSDKReady = () => {
+    player = new Spotify.Player({
+        name: 'Your Web Player Name',
+        getOAuthToken: callback => {
+            callback(accessToken);
+        }
+    });
+
+    player.addListener('player_state_changed', state => {
+        console.log(state);
+        isPlaying = !state.paused;
+        if (isPlaying) {
+            document.getElementById('playPause').textContent = '⏸️';
+        } else {
+            document.getElementById('playPause').textContent = '▶️';
+        }
+    });
+
+    player.addListener('ready', ({ device_id }) => {
+        console.log('Ready with Device ID', device_id);
+
+        // Set the device_id as the active playback device immediately.
+        const headers = {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+        };
+
+        fetch('https://api.spotify.com/v1/me/player', {
+            method: 'PUT',
+            headers: headers,
+            body: JSON.stringify({
+                device_ids: [device_id],
+                play: true
+            }),
+        }).then(response => {
+            if (!response.ok) {
+                console.error('Error setting active device:', response.statusText);
+            }
+        });
+    });
+  
+    player.connect();
+};
+
 document.getElementById('webPlayer').style.display = 'block';
 
-// this is a test
+// Initialize the event listeners
+initializeEventListeners();
 
 
 

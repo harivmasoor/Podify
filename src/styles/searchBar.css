@@ -92,3 +92,6 @@ input:-webkit-autofill {
     background-color: #f6f6f6;
 }
 
+#search-container {
+    display: block !important;
+}

@@ -59,3 +59,18 @@
     text-align: center; /* Optional: center aligns the text */
     margin-bottom: 20px; /* Optional: provides some space below the title */
   }
+
+  #seekBarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* if you want elements stacked vertically */
+    width: 100%; /* adjust as needed */
+    margin: 20px 0; /* adjust as needed for top and bottom margin */
+}
+
+#seekBar {
+    width: 80%; /* adjust based on your design preference */
+    margin: 5px 0;
+}
+

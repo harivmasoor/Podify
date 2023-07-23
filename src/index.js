@@ -3,6 +3,7 @@
 import { setupSearch } from './searchBar.js';
 import { setupWebPlayer, checkWebPlaybackSDKCompatibility } from './webPlayer.js';
 
+let updateSeekBarInterval;  // Declare the variable at a scope accessible by all your functions
 let accessToken; // Move the declaration of accessToken to a higher scope
 let player;  // Declare the player variable at a scope accessible by all your functions
 let isPlaying = false;  // To track playback state
@@ -38,15 +39,18 @@ function togglePlay() {
             console.log('Paused Playback');
             isPlaying = false;
             document.getElementById('playPause').textContent = '▶️';
+            clearInterval(updateSeekBarInterval);  // Stop updating the seek bar
         });
     } else {
         player.resume().then(() => {
             console.log('Resumed Playback');
             isPlaying = true;
             document.getElementById('playPause').textContent = '⏸️';
+            updateSeekBarInterval = setInterval(updateSeekBar, 1000);  // Resume updating the seek bar
         });
     }
 }
+
 
 function rewindTrack() {
     player.getCurrentState().then(state => {
@@ -162,6 +166,8 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     player.addListener('ready', ({ device_id }) => {
         console.log('Ready with Device ID', device_id);
 
+        updateSeekBarInterval = setInterval(updateSeekBar, 1000);  // Update the seek bar every second
+
         // Set the device_id as the active playback device immediately.
         const headers = {
             'Authorization': `Bearer ${accessToken}`,
@@ -200,6 +206,17 @@ function formatTime(ms) {
     const seconds = totalSeconds % 60;
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
+
+function updateSeekBar() {
+    player.getCurrentState().then(state => {
+        if (state) {
+            const currentPosition = state.position;
+            document.getElementById('seekBar').value = currentPosition;
+            document.getElementById('currentTime').textContent = formatTime(currentPosition);
+        }
+    });
+}
+
 
 // Initialize the event listeners
 initializeEventListeners();

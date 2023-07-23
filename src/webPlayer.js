@@ -22,7 +22,7 @@ async function playItem(itemId, itemType) {
     };
 
     try {
-        console.log("Attempting to play", endpoint, body);
+        console.log("Attempting to play", constext_uri);
         const response = await fetch(endpoint, {
             method: 'PUT',
             headers: headers,

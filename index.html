@@ -5,13 +5,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="Podify - Your go-to place for streaming podcasts and music from Spotify." />
+    
     <link rel="stylesheet" href="./dist/main.css" />
     <link rel="stylesheet" href="src/styles/searchBar.css" />
     <link rel="stylesheet" href="src/styles/loginButton.css" />
     <link rel="stylesheet" href="src/styles/webPlayer.css" />
-    <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <link rel="icon" type="image/png" href="assets/podify.png" />
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+    
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <title>Podify</title>
 </head>
 
@@ -21,35 +25,39 @@
     </header>
 
     <main>
-        <div id="center-container">
+        <section id="center-container">
             <h2>Hello</h2>
             <p id="username"></p>
             <button id="loginButton">Log in with Spotify</button>
-        </div>
+        </section>
         
-        <div id="search-container">
-            <input type="text" id="searchInput" placeholder="Search for podcasts or songs..."/>
-            <div id="searchResults"></div>
-        </div>    
+        <section id="search-container">
+            <input type="text" id="searchInput" placeholder="Search for podcasts or songs..." aria-label="Search Bar"/>
+            <div id="searchResults" role="listbox"></div>
+        </section>
+
+        <section id="currentlyPlaying">
+            <img id="currentImage" src="" alt="Currently playing image">
+            <p id="currentTitle"></p>
+        </section>    
     </main>
-    <div id="currentlyPlaying">
-        <img id="currentImage" src="" alt="Playing image">
-        <p id="currentTitle"></p>
-    </div>
-    <div id="webPlayer">
+
+    <footer id="webPlayer">
         <div class="playerControls">
-            <button id="rewind">⏪</button>
-            <button id="playPause">▶️</button>
-            <button id="fastForward">⏩</button>
+            <button id="rewind" aria-label="Rewind">⏪</button>
+            <button id="playPause" aria-label="Play or Pause">▶️</button>
+            <button id="fastForward" aria-label="Fast Forward">⏩</button>
         </div>
         <div class="nowPlaying">
             <span id="trackName"></span>
         </div>
-    </div>    
+    </footer> 
+    
     <script src="./dist/main.js"></script>
 </body>
 
 </html>
+
 
 
 

@@ -1,5 +1,5 @@
 #searchInput {
-    display: block; 
+    display: block;
     width: 100%;
     padding: 10px 15px;
     font-size: 16px;
@@ -7,35 +7,20 @@
     border-radius: 5px;
     outline: none;
     background-color: white;
-    font-family: 'Arial Rounded MT Bold', sans-serif; /* Add the bubbly font */
-}
-
-#loginButton {
-    background-color: #1DB954; /* Spotify green color */
-    border: none;
-    border-radius: 25px;
-    color: white;
-    cursor: pointer;
-    font-size: 1rem;
-    padding: 10px 20px;
-    transition: background-color 0.3s;
-}
-
-#loginButton:hover {
-    background-color: #1AA34A; /* A slightly darker green for hover effect */
+    font-family: 'Arial Rounded MT Bold', sans-serif;
+    transition: border 0.3s; /* Add transition */
 }
 
 input:-webkit-autofill {
-    border: 1px solid #ccc;  /* You can adjust to your preferred border style */
+    border: 1px solid #ccc;
     -webkit-text-fill-color: currentColor;
     transition: background-color 5000s ease-in-out 0s;
     -webkit-box-shadow: 0 0 0px 1000px white inset !important;
 }
 
-
 #searchInput:focus {
-    box-shadow: none;
-    outline: none;
+    border-color: #1DB954;  /* Provide a hint of focus with Spotify green color */
+    box-shadow: 0 0 5px rgba(29, 185, 84, 0.2);  /* Gentle shadow to improve focus visibility */
 }
 
 #searchInput, #searchResults {
@@ -55,14 +40,16 @@ input:-webkit-autofill {
     border-radius: 5px;
     background-color: #fff;
     z-index: 1000;
-    font-family: 'Arial Rounded MT Bold', sans-serif; /* Add the bubbly font */
+    font-family: 'Arial Rounded MT Bold', sans-serif;
+    transition: opacity 0.3s, visibility 0.3s; /* Add transition */
 }
-
 
 #searchResults div {
     padding: 10px 15px;
     cursor: pointer;
     border-bottom: 1px solid #eee;
+    display: flex;  /* Use flexbox for aligning content */
+    align-items: center;  /* Vertically center content */
 }
 
 #searchResults div:last-child {
@@ -73,16 +60,20 @@ input:-webkit-autofill {
     background-color: #f6f6f6;
 }
 
-#searchResults {
-    /* ... other styles ... */
-    top: 355px;  /* Adjust this value to move the dropdown below the search input */
-    /* display: none; */
+#searchResults img {
+    width: 50px;  /* Image size */
+    height: 50px;  /* Image size */
+    border-radius: 50%;  /* Circle crop */
+    object-fit: cover;  /* Make sure the image covers the space without stretching */
+    margin-right: 10px;  /* Space between image and text */
 }
 
 .resultItem {
     padding: 10px 15px;
     cursor: pointer;
     border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
 }
 
 .resultItem:last-child {
@@ -96,3 +87,4 @@ input:-webkit-autofill {
 #search-container {
     display: block !important;
 }
+

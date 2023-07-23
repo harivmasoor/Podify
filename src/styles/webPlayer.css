@@ -44,4 +44,8 @@
     width: 300px;  /* Adjust to your desired width */
     height: 300px; /* Adjust to your desired height */
     object-fit: cover;  /* Keeps the aspect ratio of the image intact */
+    border-radius: 5px;
+    margin: 15px 0;
+    justify-content: center;
+    align-items: center;
 }

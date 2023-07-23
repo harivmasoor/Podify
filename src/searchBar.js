@@ -53,7 +53,7 @@ async function searchSpotify(query) {
       results.push(...data.tracks.items.map(item => ({
           type: 'track',
           id: item.id,
-          name: item.artists[0].name + ' - ' + item.name, // Adjusted this line to include artist name
+          name: item.artists[0].name ? item.artists[0].name + '-' + item.name : item.name, // Adjusted this line to include artist name
           image: item.album.images[0].url, // Add image URL
       })));
   }
@@ -62,7 +62,7 @@ async function searchSpotify(query) {
     results.push(...data.episodes.items.map(item => ({
         type: 'episode',
         id: item.id,
-        name: item.show.name + ' - ' + item.name,  // Include show name
+        name: item.show ? item.show.name + ' - ' + item.name : item.name,  // Include show name
         image: item.images[0].url,  // Add image URL
     })));
 }

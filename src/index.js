@@ -47,12 +47,27 @@ function togglePlay() {
 }
 
 function rewindTrack() {
-    player.seek(player.getCurrentState().position - 15000);  // rewinds 15 seconds
+    player.getCurrentState().then(state => {
+        if (state) {
+            const newPosition = Math.max(state.position - 15000, 0); // ensure position is not negative
+            player.seek(newPosition).then(() => {
+                console.log('Rewound 15 seconds!');
+            });
+        }
+    });
 }
 
 function fastForwardTrack() {
-    player.seek(player.getCurrentState().position + 15000);  // fast forwards 15 seconds
+    player.getCurrentState().then(state => {
+        if (state) {
+            const newPosition = state.position + 15000;
+            player.seek(newPosition).then(() => {
+                console.log('Fast-forwarded 15 seconds!');
+            });
+        }
+    });
 }
+
 
 // Initialize all event listeners
 function initializeEventListeners() {

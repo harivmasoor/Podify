@@ -70,6 +70,8 @@ input:-webkit-autofill {
 }
 
 .resultItem {
+    width: 25px;  /* Image size */
+    height: 25px; /* Image size */
     padding: 10px 15px;
     cursor: pointer;
     border-bottom: 1px solid #eee;

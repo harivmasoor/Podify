@@ -49,7 +49,7 @@ async function searchSpotify(query) {
     }
 
     const data = await response.json();
-    
+    let results = [];
     let trackResults = [];
     let artistResults = [];
     let episodeResults = [];
@@ -107,7 +107,7 @@ async function searchSpotify(query) {
     artistResults.sort((a, b) => b.popularity - a.popularity);
 
     // Combine the results in desired order
-    const results = [...trackResults, ...artistResults, ...episodeResults];
+    results = [...trackResults, ...artistResults, ...episodeResults];
 
     // Call the displayResults function with the search results
     displayResults(results);

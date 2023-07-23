@@ -218,8 +218,8 @@ function updateSeekBar() {
     });
 }
 
-// document.getElementById('currentTime').textContent = formatTime(currentPosition);
-// document.getElementById('totalTime').textContent = formatTime(trackDuration);
+document.getElementById('currentTime').textContent = formatTime(currentPosition);
+document.getElementById('totalTime').textContent = formatTime(trackDuration);
 
 // Initialize the event listeners
 initializeEventListeners();

@@ -41,8 +41,14 @@ async function playItem(itemId, itemType) {
         handlePlaybackError(error);
     }
 }
+let spotifySDKReady = new Promise((resolve) => {
+    window.onSpotifyWebPlaybackSDKReady = () => {
+        resolve();
+    };
+});
 
-export function checkWebPlaybackSDKCompatibility() {
+export async function checkWebPlaybackSDKCompatibility() {
+    await spotifySDKReady;  // wait for the SDK to be ready
     return window.Spotify?.Player?.isSupported() ?? false;
 }
 

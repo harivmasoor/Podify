@@ -1,3 +1,4 @@
+import { playItem } from './webPlayer.js'; 
 let accessToken = null;
 
 export function setupSearch(accessTokenValue) {
@@ -83,6 +84,23 @@ async function searchSpotify(query) {
           image: item.images[0].url
       }));
     }
+    if (data.shows && data.shows.items) {
+      results.push(...data.shows.items.map(item => ({
+        type: 'show',
+        id: item.id,
+        name: item.name,
+        image: item.images[0]?.url || '',
+      })));
+    }
+    if (data.artists && data.artists.items) {
+  results.push(...data.artists.items.map(item => ({
+    type: 'artist',
+    id: item.id,
+    name: item.name,
+    image: item.images[0]?.url || '', // Use the first image or an empty string as a fallback
+  })));
+}
+
 
     // Sort tracks and artists by popularity
     trackResults.sort((a, b) => b.popularity - a.popularity);
@@ -108,7 +126,24 @@ function displayResults(results) {
 
   const episodeResults = results.filter(result => result.type === 'episode');
   const trackResults = results.filter(result => result.type === 'track');
+  const artistResults = results.filter(result => result.type === 'artist');
+  const showResults = results.filter(result => result.type === 'show');
 
+if (artistResults.length > 0) {
+  const geniusHeader = document.createElement('h2');
+  geniusHeader.textContent = 'Geniuses';
+  resultsContainer.appendChild(geniusHeader);
+
+  artistResults.forEach(result => appendResultToContainer(result, resultsContainer));
+}
+
+if (showResults.length > 0) {
+  const mogulHeader = document.createElement('h2');
+  mogulHeader.textContent = 'Moguls';
+  resultsContainer.appendChild(mogulHeader);
+
+  showResults.forEach(result => appendResultToContainer(result, resultsContainer));
+}
   if (episodeResults.length > 0) {
     const podHeader = document.createElement('h2');
     podHeader.textContent = 'Pods';
@@ -147,8 +182,12 @@ async function handleResultClick(e) {
     await getArtistTopTracks(id);
   } else if (type === 'show') {
     await getShowEpisodes(id);
+  } else if (type === 'track' || type === 'episode') {
+    playItem(id, type);
   }
 }
+
+
 
 async function getArtistTopTracks(artistId) {
   const topTracksEndpoint = `https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=US`;
@@ -180,8 +219,9 @@ async function getArtistTopTracks(artistId) {
   }
 }
 
+
 async function getShowEpisodes(showId) {
-  const episodesEndpoint = `https://api.spotify.com/v1/shows/${showId}/episodes?market=US&limit=5`;
+  const episodesEndpoint = `https://api.spotify.com/v1/shows/${showId}/episodes?market=US&limit=10`;
   const headers = {
     'Authorization': `Bearer ${accessToken}`,
     'Content-Type': 'application/json',
@@ -209,5 +249,6 @@ async function getShowEpisodes(showId) {
     console.error('Error getting show episodes:', error);
   }
 }
+
 
 

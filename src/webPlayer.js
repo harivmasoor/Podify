@@ -1,3 +1,5 @@
+ // Assuming the path to webPlayer.js is correct
+
 let currentAccessToken = null;
 
 export function setupWebPlayer(accessToken) {
@@ -11,7 +13,7 @@ export function setupWebPlayer(accessToken) {
     });
 }
 
-async function playItem(itemId, itemType) {
+export async function playItem(itemId, itemType) {
     const endpoint = `https://api.spotify.com/v1/me/player/play`;
     const headers = {
         'Authorization': `Bearer ${currentAccessToken}`,

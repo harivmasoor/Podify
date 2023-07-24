@@ -1,3 +1,5 @@
+
+
 let currentAccessToken = null;
 let currentSpotifyUri = null;
 
@@ -20,6 +22,8 @@ function redirectToSpotify() {
     if (currentSpotifyUri) {
         const spotifyURL = `https://open.spotify.com/${currentSpotifyUri.split(':').slice(1).join('/')}`;
         window.location.href = spotifyURL;
+    } else {
+        console.error('No track is currently being played.');
     }
 }
 

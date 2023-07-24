@@ -97,10 +97,10 @@
 }
 
 #spotifyLogo {
-    padding-top: 5px; /* Adjust this to make the logo vertically centered with the playtime/tracktime */
     width: 20px; /* Adjust this to make the logo smaller or larger */
     height: auto; /* Maintains the aspect ratio of the logo */
     cursor: pointer; /* Indicates that the logo is clickable */
+    padding-bottom: 5px; /* Adjust this to add space between the time and the seek bar */
 }
 
 

@@ -26,10 +26,6 @@ input:-webkit-autofill {
     box-shadow: 0 0 5px rgba(29, 185, 84, 0.2);  /* Gentle shadow to improve focus visibility */
 }
 
-#searchInput, #searchResults {
-    /* font-family: 'Poppins', sans-serif; */
-    margin-left: 10px;
-}
 
 #searchResults {
     display: block;

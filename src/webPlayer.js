@@ -93,23 +93,33 @@ export async function playItem(itemId, itemType) {
         document.getElementById('currentTitle').textContent = selectedItem.dataset.name;
     }
 }
-async function fetchCurrentPlaying() {
+async function fetchCurrentPlaying(retries = 3) {
     const endpoint = `https://api.spotify.com/v1/me/player/currently-playing`;
     const headers = {
         'Authorization': `Bearer ${currentAccessToken}`,
         'Content-Type': 'application/json',
     };
 
+    if (retries <= 0) {
+        console.warn("Max retries reached. Unable to fetch currently playing track.");
+        return;
+    }
+
     try {
         const response = await fetchWithRetry(endpoint, { headers: headers });
         if (response.ok) {
             const text = await response.text();
-            try {
-                const data = JSON.parse(text);
-                updateCurrentPlaying(data);
-            } catch (e) {
-                console.error("Failed to parse JSON. Response text:", text);
-                throw e;
+            if (text) {
+                try {
+                    const data = JSON.parse(text);
+                    updateCurrentPlaying(data);
+                } catch (e) {
+                    console.error("Failed to parse JSON. Response text:", text);
+                    throw e;
+                }
+            } else {
+                console.warn("No track is currently playing or the response is empty. Retrying...");
+                setTimeout(() => fetchCurrentPlaying(retries - 1), 2000);  // retry after 2 seconds
             }
         } else {
             const text = await response.text();
@@ -119,6 +129,7 @@ async function fetchCurrentPlaying() {
         console.error('Error fetching current playing:', error);
     }
 }
+
 
 function updateCurrentPlaying(data) {
     if (data && data.item) {

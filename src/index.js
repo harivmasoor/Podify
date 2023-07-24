@@ -221,26 +221,25 @@ function updateSeekBar() {
 
 document.getElementById('currentTime').textContent = formatTime(currentPosition);
 document.getElementById('totalTime').textContent = formatTime(trackDuration);
-document.addEventListener("DOMContentLoaded", function() {
-    // Parse the URL's query parameters
-    const params = new URLSearchParams(window.location.hash.substring(1));
+// Function to get a specific URL parameter
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 
-    const isPremium = params.get('premium') !== 'false'; // If 'premium' is 'false', then isPremium will be false.
+const isPremium = getParameterByName('premium');
 
-    if (!isPremium) {
-        alert('Please upgrade to premium, or the features wont work');
-        setTimeout(() => {
-            window.location.href = 'https://www.spotify.com';
-        }, 3000);
-    } else {
-        // Handle the logic for premium users (like setting up the web player, etc.)
-        const accessToken = params.get('access_token');
-        if (accessToken) {
-            setupWebPlayer(accessToken);
-            // Any other logic that you want to run for authenticated premium users
-        }
-    }
-});
+if (isPremium === 'false') {
+    alert("Your Spotify account is not premium. You need a premium account to access this application. Redirecting to Spotify's homepage...");
+    window.location.href = 'https://www.spotify.com';
+} 
+// You don't need an "else" block here, as the redirection would stop any further code execution for non-premium users.
+
 
 
 // Initialize the event listeners

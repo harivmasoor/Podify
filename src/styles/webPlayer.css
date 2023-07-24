@@ -15,8 +15,6 @@
 
 .playerControls {
     display: none;
-    justify-content: center;
-    align-items: center;
     gap: 15px;
 }
 
@@ -27,6 +25,7 @@
     cursor: pointer;
     color: #1DB954; /* Spotify green color */
     transition: color 0.3s;
+    justify-content: space-evenly;
 }
 
 .playerControls button:hover {
@@ -107,6 +106,18 @@
 
 #rewind {
     margin-right: 20px; /* or any value that fits your design */
+}
+
+#currentlyPlaying {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* centers children horizontally */
+    justify-content: center; /* centers children vertically, if you want */
+}
+
+#currentImage, #currentTitle {
+    float: none;
+    text-align: center; 
 }
 
 

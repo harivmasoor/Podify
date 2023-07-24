@@ -21,7 +21,7 @@ export function setupWebPlayer(accessToken) {
 function redirectToSpotify() {
     if (currentSpotifyUri) {
         const spotifyURL = `https://open.spotify.com/${currentSpotifyUri.split(':').slice(1).join('/')}`;
-        window.location.href = spotifyURL;
+        window.open(spotifyURL, '_blank');
     } else {
         console.error('No track is currently being played.');
     }

@@ -145,6 +145,7 @@ window.addEventListener('load', () => {
         } else {
             alert("Device not suitable for playback");
         }
+        onSuccessfulLogin();
     }
 });
 

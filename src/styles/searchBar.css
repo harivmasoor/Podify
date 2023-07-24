@@ -10,6 +10,8 @@
     border-radius: 5px;
     outline: none;
     background-color: white;
+    text-align: center;
+    font-weight: bold;
     /* font-family: 'Arial Rounded MT Bold', sans-serif; */
     transition: border 0.3s; /* Add transition */
     margin-left: -15px;

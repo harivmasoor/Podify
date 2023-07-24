@@ -28,6 +28,7 @@ input:-webkit-autofill {
 
 #searchInput, #searchResults {
     font-family: 'Poppins', sans-serif;
+    margin-left: 10px;
 }
 
 #searchResults {

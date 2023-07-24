@@ -83,8 +83,8 @@ function onSuccessfulLogin() {
     document.getElementById('webPlayer').style.display = 'flex';
     
     // For elements with class, use querySelector
-    document.querySelector('.playerControls').style.display = 'block'; 
-    document.querySelector('.playerControls button').style.display = 'block'; 
+    document.querySelector('.playerControls').style.display = 'flex'; 
+    document.querySelector('.playerControls button').style.display = 'flex'; 
     
     document.getElementById('seekBarContainer').style.display = 'block';
     document.getElementById('currentTime').style.display = 'block'; // removed '#'

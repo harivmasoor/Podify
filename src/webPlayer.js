@@ -9,6 +9,15 @@ export function setupWebPlayer(accessToken) {
             playItem(e.target.dataset.id, e.target.dataset.type);
         }
     });
+
+    // Adding event listener to the Spotify logo
+    const spotifyLogo = document.getElementById('spotifyLogo');
+    spotifyLogo.addEventListener('click', redirectToSpotify);
+}
+
+function redirectToSpotify() {
+    const spotifyURL = "https://open.spotify.com/";
+    window.location.href = spotifyURL;
 }
 
 async function fetchWithRetry(endpoint, options, maxRetries = 3) {

@@ -178,13 +178,13 @@ async function handleResultClick(e) {
   const type = e.currentTarget.dataset.type;
   const id = e.currentTarget.dataset.id;
 
-  if (type === 'artist') {
-    await getArtistTopTracks(id);
-  } else if (type === 'show') {
-    await getShowEpisodes(id);
-  } else if (type === 'track' || type === 'episode') {
-    playItem(id, type);
-  }
+//   if (type === 'artist') {
+//     await getArtistTopTracks(id);
+//   } else if (type === 'show') {
+//     await getShowEpisodes(id);
+//   } else if (type === 'track' || type === 'episode') {
+//     playItem(id, type);
+//   }
 }
 
 

@@ -6,6 +6,7 @@ export function setupSearch(accessTokenValue) {
 
   const searchInput = document.getElementById('searchInput');
   const searchResults = document.getElementById('searchResults');
+  searchInput.style.display = 'block';
   let timer;
 
   searchInput.addEventListener('input', (e) => {

@@ -1,8 +1,7 @@
 #searchInput {
     margin-top: 50px;
     /* margin-left: -35px; */
-    display: block;
-    display: flex;
+    display: none;
     justify-content: center;
     width: 100%;
     padding: 10px 15px;

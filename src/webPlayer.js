@@ -6,12 +6,6 @@ let currentSpotifyUri = null;
 export function setupWebPlayer(accessToken) {
     currentAccessToken = accessToken;
 
-    // const searchResults = document.getElementById('searchResults');
-    // searchResults.addEventListener('click', (e) => {
-    //     if (e.target.classList.contains('resultItem')) {
-    //         playItem(e.target.dataset.id, e.target.dataset.type);
-    //     }
-    // });
 
     // Adding event listener to the Spotify logo
     const spotifyLogo = document.getElementById('spotifyLogo');

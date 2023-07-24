@@ -95,10 +95,7 @@
     padding-bottom: 5px;   /* Adjust this to add space between the time and the seek bar */
 }
 
-.player-controls {
-    display: none;
-    gap: 15px; /* This adds a small space between the playtime/tracktime and the logo */
-}
+
 
 #spotifyLogo {
     display: none;;
@@ -106,6 +103,10 @@
     height: auto; /* Maintains the aspect ratio of the logo */
     cursor: pointer; /* Indicates that the logo is clickable */
     padding-bottom: 5px; /* Adjust this to add space between the time and the seek bar */
+}
+
+#rewind {
+    margin-right: 20px; /* or any value that fits your design */
 }
 
 

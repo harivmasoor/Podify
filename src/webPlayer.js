@@ -103,13 +103,23 @@ async function fetchCurrentPlaying() {
     try {
         const response = await fetchWithRetry(endpoint, { headers: headers });
         if (response.ok) {
-            const data = await response.json();
-            updateCurrentPlaying(data);
+            const text = await response.text();
+            try {
+                const data = JSON.parse(text);
+                updateCurrentPlaying(data);
+            } catch (e) {
+                console.error("Failed to parse JSON. Response text:", text);
+                throw e;
+            }
+        } else {
+            const text = await response.text();
+            console.error("Error response:", text);
         }
     } catch (error) {
         console.error('Error fetching current playing:', error);
     }
 }
+
 function updateCurrentPlaying(data) {
     if (data && data.item) {
         const track = data.item;

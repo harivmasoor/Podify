@@ -239,6 +239,40 @@ if (isPremium === 'false') {
     window.location.href = 'https://www.spotify.com';
 } 
 // You don't need an "else" block here, as the redirection would stop any further code execution for non-premium users.
+document.addEventListener("DOMContentLoaded", function() {
+    // Parse the URL's query parameters
+    const params = new URLSearchParams(window.location.hash.substring(1));
+    const accessToken = params.get('access_token');
+
+    if (accessToken) {
+        fetchUserProfile(accessToken).then(userProfile => {
+            if (userProfile.product !== 'premium') {
+                alert('Please upgrade to premium to use this app.');
+                window.location.href = 'https://www.spotify.com';
+            } else {
+                // Handle the logic for premium users (like setting up the web player, etc.)
+                setupWebPlayer(accessToken);
+            }
+        }).catch(error => {
+            console.error("Error fetching user profile:", error);
+            alert('There was an error fetching your Spotify profile.');
+        });
+    }
+});
+
+function fetchUserProfile(accessToken) {
+    return new Promise((resolve, reject) => {
+        fetch('https://api.spotify.com/v1/me', {
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            }
+        }).then(response => response.json()).then(data => {
+            resolve(data);
+        }).catch(error => {
+            reject(error);
+        });
+    });
+}
 
 
 

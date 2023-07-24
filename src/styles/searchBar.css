@@ -10,7 +10,7 @@
     border-radius: 5px;
     outline: none;
     background-color: white;
-    font-family: 'Arial Rounded MT Bold', sans-serif;
+    /* font-family: 'Arial Rounded MT Bold', sans-serif; */
     transition: border 0.3s; /* Add transition */
 }
 
@@ -27,7 +27,7 @@ input:-webkit-autofill {
 }
 
 #searchInput, #searchResults {
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
     margin-left: 10px;
 }
 
@@ -44,7 +44,7 @@ input:-webkit-autofill {
     border-radius: 5px;
     background-color: #fff;
     z-index: 1000;
-    font-family: 'Arial Rounded MT Bold', sans-serif;
+    /* font-family: 'Arial Rounded MT Bold', sans-serif; */
     transition: opacity 0.3s, visibility 0.3s; /* Add transition */
 }
 

@@ -7,7 +7,7 @@
     background-color: #fff;
     padding: 15px;
     /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
     flex-direction: column; /* Stacks the child elements vertically */
     justify-content: center;
     align-items: center;
@@ -56,7 +56,7 @@
 
 #currentTitle {
     font-size: 32px; /* Change the value to your desired size */
-    font-family: 'Arial', sans-serif; /* Change the font family to your desired font */
+    /* font-family: 'Arial', sans-serif; Change the font family to your desired font */
     font-weight: bold;
     color: #333; /* Change the color if needed */
     text-align: center; /* Optional: center aligns the text */
@@ -104,9 +104,6 @@
     padding-bottom: 5px; /* Adjust this to add space between the time and the seek bar */
 }
 
-#rewind {
-    margin-right: 20px; /* or any value that fits your design */
-}
 
 #currentlyPlaying {
     display: flex;

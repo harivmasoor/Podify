@@ -60,8 +60,13 @@ body, html {
 #username {
     font-size: 24px;  /* Adjust to your preference */
     font-weight: bold;
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
 }
 
 
 
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /* Set Poppins as the primary font */
+}

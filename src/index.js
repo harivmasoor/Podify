@@ -80,7 +80,7 @@ function onSuccessfulLogin() {
     // Display the current image, Spotify logo, and web player
     document.getElementById('currentImage').style.display = 'block';
     document.getElementById('spotifyLogo').style.display = 'block'; // changed to getElementById
-    document.getElementById('webPlayer').style.display = 'block';
+    document.getElementById('webPlayer').style.display = 'flex';
     
     // For elements with class, use querySelector
     document.querySelector('.playerControls').style.display = 'block'; 

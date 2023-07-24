@@ -12,7 +12,7 @@
     background-color: white;
     /* font-family: 'Arial Rounded MT Bold', sans-serif; */
     transition: border 0.3s; /* Add transition */
-    margin-left: -10px;
+    margin-left: -15px;
 }
 
 input:-webkit-autofill {

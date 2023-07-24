@@ -78,15 +78,20 @@ function fastForwardTrack() {
 
 function onSuccessfulLogin() {
     // Display the current image, Spotify logo, and web player
-    document.getElementById('currentImage').style.display = 'block'; // Or 'inline', 'inline-block', etc. based on your layout needs
-    document.querySelector('.spotifyLogo').style.display = 'block';
+    document.getElementById('currentImage').style.display = 'block';
+    document.getElementById('spotifyLogo').style.display = 'block'; // changed to getElementById
     document.getElementById('webPlayer').style.display = 'block';
-    document.getElementById('.playerControls').style.display = 'block';
-    document.getElementById('.playerControls button').style.display = 'block';
+    
+    // For elements with class, use querySelector
+    document.querySelector('.playerControls').style.display = 'block'; 
+    document.querySelector('.playerControls button').style.display = 'block'; 
+    
     document.getElementById('seekBarContainer').style.display = 'block';
-    document.getElementById('#currentTime').style.display = 'block';
-    document.getElementById('TotalTime').style.display = 'block';
-    document.getElementById('.player-controls').style.display = 'block';
+    document.getElementById('currentTime').style.display = 'block'; // removed '#'
+    document.getElementById('totalTime').style.display = 'block'; // corrected capitalization to match HTML ID
+    
+    // Removed the line for '.player-controls' as it doesn't match any class in the provided HTML.
+    
 }
 
 // Initialize all event listeners

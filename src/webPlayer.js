@@ -13,15 +13,6 @@ export function setupWebPlayer(accessToken) {
 
     // Fetch and update the current playing song after user logs in
     fetchCurrentPlaying();
-    document.getElementById('currentImage').style.display = 'block'; // Or 'inline', 'inline-block', etc. based on your layout needs
-    document.querySelector('.spotifyLogo').style.display = 'block';
-    document.getElementById('webPlayer').style.display = 'block';
-    document.getElementById('.playerControls').style.display = 'block';
-    document.getElementById('.playerControls button').style.display = 'block';
-    document.getElementById('seekBarContainer').style.display = 'block';
-    document.getElementById('#currentTime').style.display = 'block';
-    document.getElementById('TotalTime').style.display = 'block';
-    document.getElementById('.player-controls').style.display = 'block';
 }
 
 function redirectToSpotify() {

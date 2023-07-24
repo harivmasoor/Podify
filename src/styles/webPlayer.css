@@ -79,14 +79,15 @@
 #timeContainer {
     font-size: 14px;
     font-weight: 600;
-    color: #333;  // Choose a color that fits your design
+    color: #333; /* Change the color if needed */
     display: flex;
-    align-items: center;  // This centers items vertically if they have different heights
-    justify-content: center;  // This centers items horizontally
+    align-items: center; /* This vertically centers items */
+    justify-content: center; /* This horizontally centers items */
 }
 
 #currentTime, #totalTime {
-    margin: 0 5px;  // Spacing between the times and the "/"
+    margin: 0 5px;  /* Adjust this to add space between the time and the seek bar */
+    padding-bottom: 10px;   /* Adjust this to add space between the time and the seek bar */
 }
 
 .player-controls {

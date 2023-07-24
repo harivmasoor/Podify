@@ -9,6 +9,7 @@
     /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
     font-family: 'Poppins', sans-serif;
     flex-direction: column; /* Stacks the child elements vertically */
+    justify-content: center;
     align-items: center;
 }
 
@@ -65,8 +66,8 @@
 
   #seekBarContainer {
     display: none;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     flex-direction: column; /* if you want elements stacked vertically */
     width: 100%; /* adjust as needed */
     margin: 20px 0; /* adjust as needed for top and bottom margin */
@@ -75,6 +76,8 @@
 #seekBar {
     width: 80%; /* adjust based on your design preference */
     margin: 5px 0;
+    justify-content: center;
+    align-items: center;
 }
 
 #timeContainer {
@@ -94,6 +97,7 @@
 
 .player-controls {
     display: none;
+    justify-content: center;
     align-items: center; /* This vertically centers the children in case they have different heights */
     gap: 5px; /* This adds a small space between the playtime/tracktime and the logo */
 }

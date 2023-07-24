@@ -43,21 +43,20 @@
         <div id="timeContainer">
             <span id="currentTime">00:00</span> / <span id="totalTime">00:00</span>
         </div>
+        <div id="webPlayer">
+            <div id="seekBarContainer">
+                <input type="range" id="seekBar" min="0" value="0" step="1">
+            </div>        
+            <div class="playerControls">
+                <button id="rewind" aria-label="Rewind">⏪</button>
+                <button id="playPause" aria-label="Play or Pause">▶️</button>
+                <button id="fastForward" aria-label="Fast Forward">⏩</button>
+            </div>
+            <div class="nowPlaying">
+                <span id="trackName"></span>
+            </div>
+        </div> 
     </main>
-
-    <footer id="webPlayer">
-        <div id="seekBarContainer">
-            <input type="range" id="seekBar" min="0" value="0" step="1">
-        </div>        
-        <div class="playerControls">
-            <button id="rewind" aria-label="Rewind">⏪</button>
-            <button id="playPause" aria-label="Play or Pause">▶️</button>
-            <button id="fastForward" aria-label="Fast Forward">⏩</button>
-        </div>
-        <div class="nowPlaying">
-            <span id="trackName"></span>
-        </div>
-    </footer> 
     
     <script src="./dist/main.js"></script>
 </body>

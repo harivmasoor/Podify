@@ -1,19 +1,19 @@
 #webPlayer {
-    display: flex; /* Initially hidden */
+    display: none; /* Initially hidden */
     margin-top: 20px;
     width: 100%;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 5px;
     background-color: #fff;
     padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
     font-family: 'Poppins', sans-serif;
     flex-direction: column; /* Stacks the child elements vertically */
     align-items: center;
 }
 
 .playerControls {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     gap: 15px;
@@ -43,6 +43,7 @@
 }
 
 #currentImage {
+    display: none;
     margin-top: 50px;
     width: 300px;  /* Adjust to your desired width */
     height: 300px; /* Adjust to your desired height */
@@ -63,7 +64,7 @@
   }
 
   #seekBarContainer {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     flex-direction: column; /* if you want elements stacked vertically */
@@ -86,17 +87,19 @@
 }
 
 #currentTime, #totalTime {
+    display: none;
     margin: 0 5px;  /* Adjust this to add space between the time and the seek bar */
     padding-bottom: 5px;   /* Adjust this to add space between the time and the seek bar */
 }
 
 .player-controls {
-    display: flex;
+    display: none;
     align-items: center; /* This vertically centers the children in case they have different heights */
     gap: 5px; /* This adds a small space between the playtime/tracktime and the logo */
 }
 
 #spotifyLogo {
+    display: none;;
     width: 20px; /* Adjust this to make the logo smaller or larger */
     height: auto; /* Maintains the aspect ratio of the logo */
     cursor: pointer; /* Indicates that the logo is clickable */

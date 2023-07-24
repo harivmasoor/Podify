@@ -1,4 +1,5 @@
 let currentAccessToken = null;
+let currentSpotifyUri = null;
 
 export function setupWebPlayer(accessToken) {
     currentAccessToken = accessToken;
@@ -16,9 +17,12 @@ export function setupWebPlayer(accessToken) {
 }
 
 function redirectToSpotify() {
-    const spotifyURL = "https://open.spotify.com/";
-    window.location.href = spotifyURL;
+    if (currentSpotifyUri) {
+        const spotifyURL = `https://open.spotify.com/${currentSpotifyUri.split(':').slice(1).join('/')}`;
+        window.location.href = spotifyURL;
+    }
 }
+
 
 async function fetchWithRetry(endpoint, options, maxRetries = 3) {
     for (let i = 0; i < maxRetries; i++) {
@@ -41,13 +45,18 @@ export async function playItem(itemId, itemType) {
     };
     
     let body;
+
+    // This part identifies the type of item and prepares the body for the play request.
+    // It also updates the currentSpotifyUri variable with the URI of the current item.
     if (itemType === 'track' || itemType === 'episode') {
+        currentSpotifyUri = `spotify:${itemType}:${itemId}`;
         body = {
-            uris: [`spotify:${itemType}:${itemId}`],
+            uris: [currentSpotifyUri],
         };
     } else {
+        currentSpotifyUri = `spotify:${itemType}:${itemId}`;
         body = {
-            context_uri: `spotify:${itemType}:${itemId}`,
+            context_uri: currentSpotifyUri,
         };
     }
 
@@ -77,6 +86,7 @@ export async function playItem(itemId, itemType) {
         document.getElementById('currentTitle').textContent = selectedItem.dataset.name;
     }
 }
+
 
 let spotifySDKReady = new Promise((resolve) => {
     window.onSpotifyWebPlaybackSDKReady = () => {

@@ -83,8 +83,10 @@ export async function playItem(itemId, itemType) {
     
     const selectedItem = Array.from(document.getElementById('searchResults').children).find(item => item.dataset.id === itemId);
     if (selectedItem) {
-        document.getElementById('currentImage').src = selectedItem.dataset.image;
+        const currentImage = document.getElementById('currentImage');
+        currentImage.src = selectedItem.dataset.image;
         document.getElementById('currentTitle').textContent = selectedItem.dataset.name;
+        currentImage.style.display = 'block';  // Show the image
     }
 }
 async function fetchCurrentPlaying(retries = 3) {

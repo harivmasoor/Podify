@@ -8,6 +8,7 @@ let accessToken; // Move the declaration of accessToken to a higher scope
 let player;  // Declare the player variable at a scope accessible by all your functions
 let isPlaying = false;  // To track playback state
 let currentPosition = 0;  // To track the current position of the track
+let trackDuration = 0;  // To track the duration of the track
 
 // Function to get user's Spotify profile
 function getUserProfile(token) {

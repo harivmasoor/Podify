@@ -6,16 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="description" content="Podify - Your go-to place for streaming podcasts and music from Spotify." />
-    
+
     <link rel="stylesheet" href="./dist/main.css" />
     <link rel="stylesheet" href="src/styles/searchBar.css" />
     <link rel="stylesheet" href="src/styles/loginButton.css" />
     <link rel="stylesheet" href="src/styles/webPlayer.css" />
     <link rel="icon" type="image/png" href="assets/podify.png" />
-    <link rel="icon" type="image/png" href="assets/podify.png" />
-    
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
-    
+
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <title>Podify</title>
 </head>
@@ -31,20 +30,26 @@
             <p id="username"></p>
             <button id="loginButton">Log in with Spotify</button>
         </section>
-        
+
         <section id="search-container">
             <input type="text" id="searchInput" placeholder="Search for podcasts or songs..." aria-label="Search Bar"/>
             <div id="searchResults" role="listbox"></div>
         </section>
 
         <section id="currentlyPlaying">
-            <img id="currentImage" src="" alt="Currently playing image">
+            <a href="#" onclick="redirectToSpotify();"> <!-- Placeholder link, will be updated with actual Spotify URL through JS -->
+                <img id="currentImage" src="" alt="Currently playing image">
+            </a>
             <p id="currentTitle"></p>
-            <img src="assets/spotify.svg" alt="Spotify Logo" id="Spotify logo" />
+            <a href="https://www.spotify.com" target="_blank"> <!-- Link to Spotify's main page -->
+                <img src="assets/spotify.svg" alt="Powered by Spotify" id="Spotify-logo" /> <!-- Alt text changed to "Powered by Spotify" for clear attribution -->
+            </a>
         </section>    
+
         <div id="timeContainer">
             <span id="currentTime">00:00</span> / <span id="totalTime">00:00</span>
         </div>
+
         <div id="webPlayer">
             <div id="seekBarContainer">
                 <input type="range" id="seekBar" min="0" value="0" step="1">
@@ -57,13 +62,21 @@
             <div class="nowPlaying">
                 <span id="trackName"></span>
             </div>
-        </div> 
+        </div>
     </main>
-    
+
     <script src="./dist/main.js"></script>
+    <script>
+        // JS function to redirect to Spotify
+        function redirectToSpotify() {
+            let spotifyUrl = "https://open.spotify.com/track/" + currentTrackId; // Assuming you have a variable for the current track ID
+            window.open(spotifyUrl, "_blank");
+        }
+    </script>
 </body>
 
 </html>
+
 
 
 

@@ -86,7 +86,7 @@ function onSuccessfulLogin() {
     document.querySelector('.playerControls').style.display = 'flex'; 
     document.querySelector('.playerControls button').style.display = 'flex'; 
     
-    document.getElementById('seekBarContainer').style.display = 'block';
+    document.getElementById('seekBarContainer').style.display = 'flex';
     document.getElementById('currentTime').style.display = 'block'; // removed '#'
     document.getElementById('totalTime').style.display = 'block'; // corrected capitalization to match HTML ID
     

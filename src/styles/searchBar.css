@@ -4,7 +4,7 @@
     display: none;
     justify-content: center;
     width: 100%;
-    padding: 10px 15px;
+    padding: 10px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
@@ -45,7 +45,6 @@ input:-webkit-autofill {
 }
 
 #searchResults div {
-    padding: 10px 15px;
     cursor: pointer;
     border-bottom: 1px solid #eee;
     display: flex;  /* Use flexbox for aligning content */
@@ -65,7 +64,6 @@ input:-webkit-autofill {
     height: 50px;  /* Image size */
     border-radius: 50%;  /* Circle crop */
     object-fit: cover;  /* Make sure the image covers the space without stretching */
-    margin-right: 10px;  /* Space between image and text */
 }
 
 .resultItem {

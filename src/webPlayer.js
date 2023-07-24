@@ -16,6 +16,9 @@ export function setupWebPlayer(accessToken) {
     // Adding event listener to the Spotify logo
     const spotifyLogo = document.getElementById('spotifyLogo');
     spotifyLogo.addEventListener('click', redirectToSpotify);
+
+    // Fetch and update the current playing song after user logs in
+    fetchCurrentPlaying();
 }
 
 function redirectToSpotify() {
@@ -88,6 +91,33 @@ export async function playItem(itemId, itemType) {
     if (selectedItem) {
         document.getElementById('currentImage').src = selectedItem.dataset.image;
         document.getElementById('currentTitle').textContent = selectedItem.dataset.name;
+    }
+}
+async function fetchCurrentPlaying() {
+    const endpoint = `https://api.spotify.com/v1/me/player/currently-playing`;
+    const headers = {
+        'Authorization': `Bearer ${currentAccessToken}`,
+        'Content-Type': 'application/json',
+    };
+
+    try {
+        const response = await fetchWithRetry(endpoint, { headers: headers });
+        if (response.ok) {
+            const data = await response.json();
+            updateCurrentPlaying(data);
+        }
+    } catch (error) {
+        console.error('Error fetching current playing:', error);
+    }
+}
+function updateCurrentPlaying(data) {
+    if (data && data.item) {
+        const track = data.item;
+        currentSpotifyUri = track.uri;
+        document.getElementById('currentImage').src = track.album.images[0].url;
+        document.getElementById('currentTitle').textContent = track.name;
+    } else {
+        console.warn('No track is currently being played.');
     }
 }
 

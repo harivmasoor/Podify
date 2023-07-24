@@ -19,12 +19,20 @@ export async function playItem(itemId, itemType) {
         'Authorization': `Bearer ${currentAccessToken}`,
         'Content-Type': 'application/json',
     };
-    const body = {
-        context_uri: `spotify:${itemType}:${itemId}`,
-    };
+    
+    let body;
+    if (itemType === 'track' || itemType === 'episode') {
+        body = {
+            uris: [`spotify:${itemType}:${itemId}`],
+        };
+    } else {
+        body = {
+            context_uri: `spotify:${itemType}:${itemId}`,
+        };
+    }
 
     try {
-        console.log("Attempting to play", body.context_uri);
+        console.log("Attempting to play", body);
         const response = await fetch(endpoint, {
             method: 'PUT',
             headers: headers,

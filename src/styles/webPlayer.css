@@ -89,4 +89,16 @@
     margin: 0 5px;  // Spacing between the times and the "/"
 }
 
+.player-controls {
+    display: flex;
+    align-items: center; /* This vertically centers the children in case they have different heights */
+    gap: 5px; /* This adds a small space between the playtime/tracktime and the logo */
+}
+
+#spotifyLogo {
+    width: 20px; /* Adjust this to make the logo smaller or larger */
+    height: auto; /* Maintains the aspect ratio of the logo */
+    cursor: pointer; /* Indicates that the logo is clickable */
+}
+
 

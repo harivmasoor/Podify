@@ -11,7 +11,7 @@ export function initializeAudioCapture() {
                 audio: {
                     echoCancellation: false,
                     autoGainControl: false,
-                    noiseSuppression: false
+                    noiseSuppression: false,
                     latency: 0
                 }
             };

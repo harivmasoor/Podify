@@ -281,10 +281,6 @@ function fetchUserProfile(accessToken) {
         });
     });
 }
-
-
-
-
 // Initialize the event listeners
 initializeEventListeners();
 

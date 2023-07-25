@@ -5,31 +5,24 @@ const chunkDuration = 30000;
 const overlapDuration = 250;
 
 export function initializeAudioCapture() {
-    captureAudioButton.addEventListener('click', () => {
+    captureAudioButton.addEventListener('click', async () => {
         if (typeof mediaRecorder === 'undefined' || mediaRecorder.state === 'inactive') {
-            const constraints = {
-                audio: {
-                    echoCancellation: false,
-                    autoGainControl: false,
-                    noiseSuppression: false,
-                    latency: 0
-                }
-            };
-
-            navigator.mediaDevices.getUserMedia(constraints)
-                .then(stream => {
-                    mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
-    
-
-                    mediaRecorder.ondataavailable = onDataAvailable;
-                    mediaRecorder.onstop = onRecordingStop;
-
-                    mediaRecorder.start(chunkDuration - overlapDuration);
-                    captureAudioButton.textContent = "Stop Recording";
-                })
-                .catch(err => {
-                    console.error('Error accessing the microphone', err);
+            try {
+                const stream = await navigator.mediaDevices.getDisplayMedia({
+                    audio: true,
+                    video: false
                 });
+
+                mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
+
+                mediaRecorder.ondataavailable = onDataAvailable;
+                mediaRecorder.onstop = onRecordingStop;
+
+                mediaRecorder.start(chunkDuration - overlapDuration);
+                captureAudioButton.textContent = "Stop Recording";
+            } catch (err) {
+                console.error('Error accessing the tab audio', err);
+            }
         } else if (mediaRecorder.state === 'recording') {
             mediaRecorder.stop();
             captureAudioButton.textContent = "Capture Sound";
@@ -78,7 +71,6 @@ async function sendToAPI(data) {
     }
 }
 
-
 function displayTranscription(result) {
     const transcriptionBox = document.getElementById('transcriptionBox');
     if (result && result.transcript) {
@@ -92,5 +84,6 @@ function displayTranscription(result) {
 document.addEventListener('DOMContentLoaded', () => {
     initializeAudioCapture();
 });
+
 
 

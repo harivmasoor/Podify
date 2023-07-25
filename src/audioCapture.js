@@ -11,7 +11,7 @@ export function initializeAudioCapture() {
                 audio: {
                     echoCancellation: false,
                     autoGainControl: false,
-                    noiseSuppression: false,
+                    noiseSuppression: false
                     latency: 0
                 }
             };
@@ -79,8 +79,8 @@ async function sendToAPI(data) {
 
 function displayTranscription(result) {
     const transcriptionBox = document.getElementById('transcriptionBox');
-    if (result && result.data) {
-        transcriptionBox.value = result.data.transcript;
+    if (result && result.text) {
+        transcriptionBox.value = result.text;
     } else {
         transcriptionBox.value = "Failed to get transcription.";
     }

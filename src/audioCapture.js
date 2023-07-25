@@ -9,12 +9,19 @@ export function initializeAudioCapture() {
     captureAudioButton.addEventListener('click', async () => {
         if (typeof mediaRecorder === 'undefined' || mediaRecorder.state === 'inactive') {
             try {
+                // Check for browser support
+                if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
+                    console.error('Your browser does not support screen capture.');
+                    return;
+                }
+
+                // Request access to capture the screen/tab and its associated audio (not the microphone)
                 const stream = await navigator.mediaDevices.getDisplayMedia({
                     audio: true,
-                    video: true  // Always request video with getDisplayMedia
+                    video: true  // Required to capture internal audio from the tab
                 });
 
-                mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' }); // This MIME type ensures only audio is recorded
+                mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
 
                 mediaRecorder.ondataavailable = onDataAvailable;
                 mediaRecorder.onstop = onRecordingStop;
@@ -30,6 +37,7 @@ export function initializeAudioCapture() {
         }
     });
 }
+
 
 
 function onDataAvailable(event) {

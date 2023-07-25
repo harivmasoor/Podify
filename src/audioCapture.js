@@ -10,7 +10,7 @@ export function initializeAudioCapture() {
             try {
                 const stream = await navigator.mediaDevices.getDisplayMedia({
                     audio: true,
-                    video: true  // required even if you only need audio
+                    video: false,
                 });
 
                 mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
@@ -31,8 +31,9 @@ export function initializeAudioCapture() {
 }
 
 function onDataAvailable(event) {
-    if (event.data.size > 0) { // Check if the chunk has data
-        audioChunks.push(event.data); // Store chunks temporarily
+    console.log("Data available event triggered", event);
+    if (event.data.size > 0) {
+        audioChunks.push(event.data);
     }
 }
 

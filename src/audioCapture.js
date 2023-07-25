@@ -61,17 +61,25 @@ async function sendToAPI(data) {
             body: formData
         });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(`Server responded with ${response.status}: ${errorData.reason || response.statusText}`);
+        const responseData = await response.text();
+        
+        let parsedData;
+        try {
+            parsedData = JSON.parse(responseData);
+        } catch (e) {
+            throw new Error(`Server responded with ${response.status}: ${responseData}`);
         }
 
-        const result = await response.json();
-        displayTranscription(result);
+        if (!response.ok) {
+            throw new Error(`Server responded with ${response.status}: ${parsedData.reason || responseData}`);
+        }
+
+        displayTranscription(parsedData);
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error.message);
     }
 }
+
 
 function displayTranscription(result) {
     const transcriptionBox = document.getElementById('transcriptionBox');

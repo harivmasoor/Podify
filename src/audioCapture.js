@@ -1,8 +1,8 @@
 const captureAudioButton = document.getElementById('captureAudio');
 let mediaRecorder;
 let audioChunks = [];
-const chunkDuration = 5000; // 5 seconds for this example. Adjust as needed.
-const overlapDuration = 250; // 0.25 seconds overlap.
+const chunkDuration = 5000;
+const overlapDuration = 250;
 
 export function initializeAudioCapture() {
     captureAudioButton.addEventListener('click', () => {
@@ -41,15 +41,13 @@ function onDataAvailable(event) {
     audioChunks.push(event.data);
 
     if (audioChunks.length > 1) {
-        sendToAPI(audioChunks[0]); // Send the oldest chunk.
-        audioChunks = audioChunks.slice(-1); // Keep only the latest chunk.
+        sendToAPI(audioChunks[0]);
+        audioChunks = audioChunks.slice(-1);
     }
 }
 
 function onRecordingStop() {
     const audioBlob = new Blob(audioChunks, { type: 'audio/webm;codecs=opus' });
-
-    // Clear the audioChunks array for the next session
     audioChunks = [];
 }
 
@@ -64,11 +62,12 @@ async function sendToAPI(data) {
         });
 
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            const errorData = await response.json();
+            throw new Error(`Server responded with ${response.status}: ${errorData.reason || response.statusText}`);
         }
 
         const result = await response.json();
-        displayTranscription(result); // Display the transcribed result on the webpage
+        displayTranscription(result);
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error.message);
     }
@@ -77,7 +76,7 @@ async function sendToAPI(data) {
 function displayTranscription(result) {
     const transcriptionBox = document.getElementById('transcriptionBox');
     if (result && result.transcript) {
-        transcriptionBox.value = result.transcript; // Adjusted to "transcript" to match backend response key
+        transcriptionBox.value = result.transcript;
     } else {
         transcriptionBox.value = "Failed to get transcription.";
     }
@@ -87,4 +86,5 @@ function displayTranscription(result) {
 document.addEventListener('DOMContentLoaded', () => {
     initializeAudioCapture();
 });
+
 

@@ -1,4 +1,4 @@
-function initializeAudioCapture() {
+export function initializeAudioCapture() {
     const captureAudioButton = document.getElementById('captureAudio');
     let mediaRecorder;
     let audioChunks = [];

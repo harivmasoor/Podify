@@ -199,7 +199,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             headers: headers,
             body: JSON.stringify({
                 device_ids: [device_id],
-                play: true
+                // play: true
             }),
         }).then(response => {
             if (!response.ok) {

@@ -1,6 +1,6 @@
 const captureAudioButton = document.getElementById('captureAudio');
 let mediaRecorder;
-let audioChunks = [];
+let audioChunk;
 const chunkDuration = 30000;
 const overlapDuration = 250;
 
@@ -38,17 +38,15 @@ export function initializeAudioCapture() {
 }
 
 function onDataAvailable(event) {
-    audioChunks.push(event.data);
-
-    if (audioChunks.length > 1) {
-        sendToAPI(audioChunks[0]);
-        audioChunks = audioChunks.slice(-1);
+    if (audioChunk) {
+        sendToAPI(audioChunk);
     }
+    audioChunk = event.data;
 }
 
 function onRecordingStop() {
-    const audioBlob = new Blob(audioChunks, { type: 'audio/webm;codecs=opus' });
-    audioChunks = [];
+    const audioBlob = new Blob([audioChunk], { type: 'audio/webm;codecs=opus' });
+    audioChunk = null;
 }
 
 async function sendToAPI(data) {

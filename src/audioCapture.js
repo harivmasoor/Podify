@@ -7,23 +7,30 @@ const overlapDuration = 250;
 
 export function initializeAudioCapture() {
     captureAudioButton.addEventListener('click', async () => {
+        if (!window.chrome || !chrome.tabCapture) {
+            console.error("chrome.tabCapture API is not available. Ensure the required extension is installed.");
+            return;
+        }
+
         if (typeof mediaRecorder === 'undefined' || mediaRecorder.state === 'inactive') {
             try {
-                const stream = await navigator.mediaDevices.getDisplayMedia({
-                    audio: true,
-                    video: true  // Always request video with getDisplayMedia
+                chrome.tabCapture.capture({ audio: true, video: false }, function(stream) {
+                    if (chrome.runtime.lastError) {
+                        console.error('Error accessing the tab audio', chrome.runtime.lastError);
+                        return;
+                    }
+
+                    console.log("Acquired stream:", stream);
+                    console.log("Stream tracks:", stream.getTracks());
+
+                    mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm' });
+
+                    mediaRecorder.ondataavailable = onDataAvailable;
+                    mediaRecorder.onstop = onRecordingStop;
+
+                    mediaRecorder.start(chunkDuration - overlapDuration);
+                    captureAudioButton.textContent = "Stop Recording";
                 });
-
-                console.log("Acquired stream:", stream);
-                console.log("Stream tracks:", stream.getTracks());
-
-                mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
-
-                mediaRecorder.ondataavailable = onDataAvailable;
-                mediaRecorder.onstop = onRecordingStop;
-
-                mediaRecorder.start(chunkDuration - overlapDuration);
-                captureAudioButton.textContent = "Stop Recording";
             } catch (err) {
                 console.error('Error accessing the tab audio', err);
             }
@@ -42,7 +49,7 @@ function onDataAvailable(event) {
 }
 
 function onRecordingStop() {
-    const audioBlob = new Blob(audioChunks, { type: 'video/webm' });
+    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
     downloadBlob(audioBlob, 'captured_audio.webm');
     audioChunks = []; // Clear the array
 }
@@ -63,10 +70,9 @@ function downloadBlob(blob, filename) {
 
 // Rest of your code remains unchanged...
 
-
 async function sendToAPI(data) {
     const formData = new FormData();
-    formData.append('audio', new Blob([data], { type: 'video/webm' }), 'audio.webm');
+    formData.append('audio', new Blob([data], { type: 'audio/webm' }), 'audio.webm');
     try {
         const response = await fetch('https://podify-backend.onrender.com/transcribe', {
             method: 'POST',
@@ -105,6 +111,7 @@ function displayTranscription(result) {
 document.addEventListener('DOMContentLoaded', () => {
     initializeAudioCapture();
 });
+
 
 
 

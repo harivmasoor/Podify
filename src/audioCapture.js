@@ -10,7 +10,7 @@ export function initializeAudioCapture() {
             try {
                 const stream = await navigator.mediaDevices.getDisplayMedia({
                     audio: true,
-                    video: false
+                    video: true  // required even if you only need audio
                 });
 
                 mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
@@ -31,15 +31,27 @@ export function initializeAudioCapture() {
 }
 
 function onDataAvailable(event) {
-    if (audioChunk) {
-        sendToAPI(audioChunk);
-    }
     audioChunk = event.data;
 }
 
 function onRecordingStop() {
     const audioBlob = new Blob([audioChunk], { type: 'audio/webm;codecs=opus' });
+    downloadBlob(audioBlob, 'captured_audio.webm');
     audioChunk = null;
+}
+
+function downloadBlob(blob, filename) {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = filename;
+
+    document.body.appendChild(a);
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
 }
 
 async function sendToAPI(data) {

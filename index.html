@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="src/styles/searchBar.css" />
     <link rel="stylesheet" href="src/styles/loginButton.css" />
     <link rel="stylesheet" href="src/styles/webPlayer.css" />
+    <link rel="stylesheet" href="src/styles/transcription.css" />
     <link rel="icon" type="image/png" href="assets/podify.png" />
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
@@ -25,6 +26,7 @@
     </header>
 
     <main>
+        <div id="contentWrapper">
         <section id="center-container">
             <h2>Hello</h2>
             <p id="username"></p>
@@ -41,7 +43,6 @@
             <p id="currentTitle"></p>
             <!-- Updated the ID for Spotify Logo -->
         </section>    
-        <textarea id="transcriptionBox" readonly></textarea>
         <div id="timeContainer">
             <span id="currentTime">00:00</span> <img src="assets/spotify.svg" alt="Spotify Logo" id="spotifyLogo" /> <span id="totalTime">00:00</span>
         </div>
@@ -59,6 +60,8 @@
             </div>
         </div> 
         <button id="captureAudio">Capture Sound</button>
+    </div>
+    <textarea id="transcriptionBox" readonly></textarea>
     </main>
     <script src="./dist/main.js"></script>
 </body>

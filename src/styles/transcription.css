@@ -1,0 +1,16 @@
+#contentWrapper {
+    position: relative;
+    width: 80%; /* You can adjust this value to give more or less space to the transcriptionBox */
+    max-width: 1200px; /* Maximum width for better design on wider screens. Adjust as necessary */
+    margin: 0 auto;
+}
+
+#transcriptionBox {
+    position: absolute;
+    right: 1%; /* Adjust this value for desired spacing from the right edge of the browser window */
+    top: 10%; /* Adjust this value for desired vertical positioning */
+    width: 18%; /* You can adjust width as per your design needs */
+    height: 70%; /* Adjust height as necessary */
+    z-index: 5; /* Ensuring it's above other content if there's any overlap */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: to give a lifted appearance */
+}

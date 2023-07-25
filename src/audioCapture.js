@@ -4,7 +4,7 @@ let audioChunks = [];
 const chunkDuration = 5000; // 5 seconds for this example. Adjust as needed.
 const overlapDuration = 250; // 0.25 seconds overlap.
 
-function initializeAudioCapture() {
+export function initializeAudioCapture() {
     captureAudioButton.addEventListener('click', () => {
         if (typeof mediaRecorder === 'undefined' || mediaRecorder.state === 'inactive') {
             const constraints = {

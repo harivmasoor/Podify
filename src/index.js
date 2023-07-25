@@ -78,7 +78,7 @@ function fastForwardTrack() {
 
 function onSuccessfulLogin() {
     // Display the current image, Spotify logo, and web player
-    document.getElementById('currentImage').style.display = 'block';
+    // document.getElementById('currentImage').style.display = 'block';
     document.getElementById('spotifyLogo').style.display = 'block'; // changed to getElementById
     document.getElementById('webPlayer').style.display = 'flex';
     

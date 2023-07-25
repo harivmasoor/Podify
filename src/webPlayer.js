@@ -90,7 +90,7 @@ export async function playItem(itemId, itemType) {
     }
 }
 async function fetchCurrentPlaying(retries = 3) {
-    const endpoint = `https://api.spotify.com/v1/me/player/currently-playing`;
+    const endpoint = `https://api.spotify.com/v1/me/player`; 
     const headers = {
         'Authorization': `Bearer ${currentAccessToken}`,
         'Content-Type': 'application/json',

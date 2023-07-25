@@ -78,7 +78,7 @@ function fastForwardTrack() {
 
 function onSuccessfulLogin() {
     // Display the current image, Spotify logo, and web player
-    // document.getElementById('currentImage').style.display = 'block';
+    document.getElementById('currentImage').style.display = 'block';
     document.getElementById('spotifyLogo').style.display = 'block'; // changed to getElementById
     document.getElementById('webPlayer').style.display = 'flex';
     
@@ -89,7 +89,6 @@ function onSuccessfulLogin() {
     document.getElementById('seekBarContainer').style.display = 'flex';
     document.getElementById('currentTime').style.display = 'block'; // removed '#'
     document.getElementById('totalTime').style.display = 'block'; // corrected capitalization to match HTML ID
-    setupWebPlayer(accessToken);
     
     // Removed the line for '.player-controls' as it doesn't match any class in the provided HTML.
     

@@ -4,16 +4,21 @@ let audioChunks = []; // Using an array to store chunks temporarily
 const chunkDuration = 30000;
 const overlapDuration = 250;
 
+let mediaStreamObj = null;  // Store the media stream globally
+
 export function initializeAudioCapture() {
     captureAudioButton.addEventListener('click', async () => {
         if (typeof mediaRecorder === 'undefined' || mediaRecorder.state === 'inactive') {
             try {
-                const stream = await navigator.mediaDevices.getDisplayMedia({
-                    audio: true,
-                    video: false,
-                });
+                // Only prompt the user if we don't have a valid stream
+                if (!mediaStreamObj) {
+                    mediaStreamObj = await navigator.mediaDevices.getDisplayMedia({
+                        audio: true,
+                        video: true  // required for internal audio capture
+                    });
+                }
 
-                mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
+                mediaRecorder = new MediaRecorder(mediaStreamObj, { mimeType: 'audio/webm;codecs=opus' });
 
                 mediaRecorder.ondataavailable = onDataAvailable;
                 mediaRecorder.onstop = onRecordingStop;
@@ -29,6 +34,7 @@ export function initializeAudioCapture() {
         }
     });
 }
+
 
 function onDataAvailable(event) {
     console.log("Data available event triggered", event);

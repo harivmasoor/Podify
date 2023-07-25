@@ -2,6 +2,8 @@
 
 import { setupSearch } from './searchBar.js';
 import { setupWebPlayer, checkWebPlaybackSDKCompatibility } from './webPlayer.js';
+import { initializeAudioCapture } from './audioCapture.js';
+
 
 let updateSeekBarInterval;  // Declare the variable at a scope accessible by all your functions
 let accessToken; // Move the declaration of accessToken to a higher scope
@@ -126,6 +128,7 @@ function initializeEventListeners() {
     document.getElementById('playPause').addEventListener('click', togglePlay);
     document.getElementById('rewind').addEventListener('click', rewindTrack);
     document.getElementById('fastForward').addEventListener('click', fastForwardTrack);
+    initializeAudioCapture();
 }
 
 // The main code that runs when the window loads

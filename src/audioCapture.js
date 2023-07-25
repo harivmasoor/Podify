@@ -53,7 +53,7 @@ function onRecordingStop() {
 
 async function sendToAPI(data) {
     const formData = new FormData();
-    formData.append('audio', new Blob([data], { type: 'audio/webm;codecs=opus' }));
+    formData.append('audio', new Blob([data], { type: 'audio/webm;codecs=opus' }), 'audio.webm');
 
     try {
         const response = await fetch('https://podify-backend.onrender.com/transcribe', {

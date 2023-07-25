@@ -1,37 +1,51 @@
 const captureAudioButton = document.getElementById('captureAudio');
 let mediaRecorder;
-let audioChunks = []; // Using an array to store chunks temporarily
+let audioChunks = [];
+
 const chunkDuration = 30000;
 const overlapDuration = 250;
 
 export function initializeAudioCapture() {
     captureAudioButton.addEventListener('click', async () => {
-        if (typeof mediaRecorder === 'undefined' || mediaRecorder.state === 'inactive') {
-            try {
-                // Get display media with internal audio
-                const stream = await navigator.mediaDevices.getDisplayMedia({
-                    audio: true,
-                    video: true
-                });
-
-                mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
-
-                mediaRecorder.ondataavailable = onDataAvailable;
-                mediaRecorder.onstop = onRecordingStop;
-
-                mediaRecorder.start(chunkDuration - overlapDuration);
-                captureAudioButton.textContent = "Stop Recording";
-            } catch (err) {
-                console.error('Error accessing the tab audio', err);
-            }
-        } else if (mediaRecorder.state === 'recording') {
+        if (typeof mediaRecorder !== 'undefined' && mediaRecorder.state === 'recording') {
             mediaRecorder.stop();
             captureAudioButton.textContent = "Capture Sound";
+            return;
+        }
+
+        try {
+            const stream = await navigator.mediaDevices.getDisplayMedia({
+                audio: true,
+                video: true
+            });
+
+            // Diagnostic logs for the stream
+            console.log("Acquired stream:", stream);
+            console.log("Stream tracks:", stream.getTracks());
+
+            mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
+
+            mediaRecorder.ondataavailable = onDataAvailable;
+            mediaRecorder.onstop = onRecordingStop;
+            mediaRecorder.onerror = (e) => {
+                console.error("MediaRecorder Error:", e);
+            };
+
+            // Try starting without a timeslice first
+            mediaRecorder.start();
+            //mediaRecorder.start(chunkDuration - overlapDuration);
+
+            console.log("MediaRecorder started:", mediaRecorder);
+
+            captureAudioButton.textContent = "Stop Recording";
+        } catch (err) {
+            console.error('Error accessing the tab audio', err);
         }
     });
 }
 
 function onDataAvailable(event) {
+    console.log("Data available event triggered", event);
     if (event.data.size > 0) {
         audioChunks.push(event.data);
     }

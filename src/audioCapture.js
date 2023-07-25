@@ -42,7 +42,7 @@ function onDataAvailable(event) {
 }
 
 function onRecordingStop() {
-    const audioBlob = new Blob(audioChunks, { type: 'audio/webm;codecs=opus' });
+    const audioBlob = new Blob(audioChunks, { type: 'video/webm' });
     downloadBlob(audioBlob, 'captured_audio.webm');
     audioChunks = []; // Clear the array
 }
@@ -66,8 +66,7 @@ function downloadBlob(blob, filename) {
 
 async function sendToAPI(data) {
     const formData = new FormData();
-    formData.append('audio', new Blob([data], { type: 'audio/webm;codecs=opus' }), 'audio.webm');
-
+    formData.append('audio', new Blob([data], { type: 'video/webm' }), 'audio.webm');
     try {
         const response = await fetch('https://podify-backend.onrender.com/transcribe', {
             method: 'POST',

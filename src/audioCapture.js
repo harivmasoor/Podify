@@ -19,7 +19,7 @@ export function initializeAudioCapture() {
             navigator.mediaDevices.getUserMedia(constraints)
                 .then(stream => {
                     mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
-                    audioChunks = [];
+    
 
                     mediaRecorder.ondataavailable = onDataAvailable;
                     mediaRecorder.onstop = onRecordingStop;

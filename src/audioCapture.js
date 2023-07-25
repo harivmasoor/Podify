@@ -56,10 +56,36 @@ function onRecordingStop() {
 }
 
 // Placeholder function to simulate sending data to the API
-function sendToAPI(data) {
-    // Replace this with your actual API call
-    console.log("Sent audio data to the Whisper API");
+async function sendToAPI(data) {
+    const formData = new FormData();
+    formData.append('audio', new Blob([data], { type: 'audio/webm;codecs=opus' }));
+
+    try {
+        const response = await fetch('https://podify-backend.onrender.com/transcribe', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const result = await response.json();
+        displayTranscription(result); // Display the transcribed result on the webpage
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error.message);
+    }
 }
+
+function displayTranscription(result) {
+    const transcriptionBox = document.getElementById('transcriptionBox');
+    if (result && result.data) {
+        transcriptionBox.value = result.data.transcript;
+    } else {
+        transcriptionBox.value = "Failed to get transcription.";
+    }
+}
+
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {

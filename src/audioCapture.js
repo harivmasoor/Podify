@@ -1,7 +1,7 @@
 const captureAudioButton = document.getElementById('captureAudio');
 let mediaRecorder;
 let audioChunks = [];
-const chunkDuration = 5000;
+const chunkDuration = 10000;
 const overlapDuration = 250;
 
 export function initializeAudioCapture() {

@@ -1,4 +1,4 @@
-export function initializeAudioCapture() {
+function initializeAudioCapture() {
     const captureAudioButton = document.getElementById('captureAudio');
     let mediaRecorder;
     let audioChunks = [];
@@ -7,7 +7,7 @@ export function initializeAudioCapture() {
         if (typeof mediaRecorder === 'undefined' || mediaRecorder.state === 'inactive') {
             navigator.mediaDevices.getUserMedia({ audio: true })
                 .then(stream => {
-                    mediaRecorder = new MediaRecorder(stream);
+                    mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
                     audioChunks = [];
 
                     mediaRecorder.ondataavailable = event => {
@@ -15,7 +15,7 @@ export function initializeAudioCapture() {
                     };
 
                     mediaRecorder.onstop = () => {
-                        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm;codecs=opus' });
                         const audioUrl = URL.createObjectURL(audioBlob);
                         const audio = new Audio(audioUrl);
                         audio.play();
@@ -38,6 +38,7 @@ export function initializeAudioCapture() {
 function downloadAudio(url) {
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'recorded-audio.wav';
+    a.download = 'recorded-audio.webm';
     a.click();
 }
+

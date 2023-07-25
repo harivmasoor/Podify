@@ -1,5 +1,4 @@
 // Description: The main JavaScript file for the Podify web app.
-
 import { setupSearch } from './searchBar.js';
 import { setupWebPlayer, checkWebPlaybackSDKCompatibility } from './webPlayer.js';
 import { initializeAudioCapture } from './audioCapture.js';
@@ -128,7 +127,7 @@ function initializeEventListeners() {
     document.getElementById('playPause').addEventListener('click', togglePlay);
     document.getElementById('rewind').addEventListener('click', rewindTrack);
     document.getElementById('fastForward').addEventListener('click', fastForwardTrack);
-    initializeAudioCapture();
+    initializeAudioCapture();  
 }
 
 // The main code that runs when the window loads

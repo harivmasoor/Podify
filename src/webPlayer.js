@@ -131,12 +131,16 @@ function updateCurrentPlaying(data) {
     if (data && data.item) {
         const track = data.item;
         currentSpotifyUri = track.uri;
-        document.getElementById('currentImage').src = track.album.images[0].url;
+
+        // Set the src. The load event will trigger once the image is loaded.
+        currentImage.src = track.album.images[0].url;
+
         document.getElementById('currentTitle').textContent = track.name;
     } else {
         console.warn('No track is currently being played.');
     }
 }
+
 
 
 let spotifySDKReady = new Promise((resolve) => {

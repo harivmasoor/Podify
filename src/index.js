@@ -83,6 +83,7 @@ function onSuccessfulLogin() {
     currentImage.addEventListener('load', function() {
         this.style.display = 'block';
     });
+    
     document.getElementById('spotifyLogo').style.display = 'block'; // changed to getElementById
     document.getElementById('webPlayer').style.display = 'flex';
     

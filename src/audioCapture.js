@@ -4,21 +4,14 @@ let audioChunks = []; // Using an array to store chunks temporarily
 const chunkDuration = 30000;
 const overlapDuration = 250;
 
-
 export function initializeAudioCapture() {
     captureAudioButton.addEventListener('click', async () => {
         if (typeof mediaRecorder === 'undefined' || mediaRecorder.state === 'inactive') {
             try {
-                // Check for browser support
-                if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
-                    console.error('Your browser does not support screen capture.');
-                    return;
-                }
-
-                // Request access to capture the screen/tab and its associated audio (not the microphone)
+                // Get display media with internal audio
                 const stream = await navigator.mediaDevices.getDisplayMedia({
                     audio: true,
-                    video: true  // Required to capture internal audio from the tab
+                    video: true
                 });
 
                 mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
@@ -38,10 +31,7 @@ export function initializeAudioCapture() {
     });
 }
 
-
-
 function onDataAvailable(event) {
-    console.log("Data available event triggered", event);
     if (event.data.size > 0) {
         audioChunks.push(event.data);
     }
@@ -66,6 +56,9 @@ function downloadBlob(blob, filename) {
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
 }
+
+// Rest of your code remains unchanged...
+
 
 async function sendToAPI(data) {
     const formData = new FormData();

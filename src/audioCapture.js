@@ -1,6 +1,6 @@
 const captureAudioButton = document.getElementById('captureAudio');
 let mediaRecorder;
-let audioChunk;
+let audioChunks = []; // Using an array to store chunks temporarily
 const chunkDuration = 30000;
 const overlapDuration = 250;
 
@@ -31,13 +31,15 @@ export function initializeAudioCapture() {
 }
 
 function onDataAvailable(event) {
-    audioChunk = event.data;
+    if (event.data.size > 0) { // Check if the chunk has data
+        audioChunks.push(event.data); // Store chunks temporarily
+    }
 }
 
 function onRecordingStop() {
-    const audioBlob = new Blob([audioChunk], { type: 'audio/webm;codecs=opus' });
+    const audioBlob = new Blob(audioChunks, { type: 'audio/webm;codecs=opus' });
     downloadBlob(audioBlob, 'captured_audio.webm');
-    audioChunk = null;
+    audioChunks = []; // Clear the array
 }
 
 function downloadBlob(blob, filename) {
@@ -65,7 +67,7 @@ async function sendToAPI(data) {
         });
 
         const responseData = await response.text();
-        
+
         let parsedData;
         try {
             parsedData = JSON.parse(responseData);
@@ -96,6 +98,7 @@ function displayTranscription(result) {
 document.addEventListener('DOMContentLoaded', () => {
     initializeAudioCapture();
 });
+
 
 
 

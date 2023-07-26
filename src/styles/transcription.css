@@ -17,5 +17,8 @@
     width: 100%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     resize: vertical;
+    position: relative;
+    padding-bottom: 20px; /* or any value you prefer */
+    transition: all 0.3s ease; /* smooth transition for height changes */
 }
 

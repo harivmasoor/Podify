@@ -104,6 +104,7 @@ function onSuccessfulLogin() {
     document.getElementById('totalTime').style.display = 'block'; // corrected capitalization to match HTML ID
     document.getElementById('transcriptionBox').style.display = 'block';
     
+    
     // Removed the line for '.player-controls' as it doesn't match any class in the provided HTML.
     
 }
@@ -306,6 +307,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+const transcriptionBox = document.getElementById('transcriptionBox');
+
+transcriptionBox.addEventListener('input', function() {
+    if (transcriptionBox.value.length > 0) {
+        transcriptionBox.style.height = "25vh"; // 25% of the viewport height
+    } else {
+        transcriptionBox.style.height = "initial";
+    }
+});
 
 // Initialize the event listeners
 initializeEventListeners();

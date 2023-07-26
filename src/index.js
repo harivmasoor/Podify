@@ -78,7 +78,7 @@ function fastForwardTrack() {
 }
 function mute() {
     console.log('Mute button clicked!');
-player.setVolume(0).then(() => {
+player.setVolume(0.05).then(() => {
     console.log('Volume updated!');
   });
 }

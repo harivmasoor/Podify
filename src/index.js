@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
     evtSource.onmessage = function(event) {
         const data = JSON.parse(event.data);
         const transcriptionBox = document.getElementById('transcriptionBox');
-        transcriptionBox.value = data.transcript;
+        transcriptionBox.value = data;
     }
 });
 

@@ -121,12 +121,14 @@
 
 
 #muteContainer {
+    display: none;
     width: 100%; 
     text-align: center; 
     margin-bottom: 10px; 
 }
 
 #mute {
+    display: none;
     font-family: 'Poppins', sans-serif;
     background-color: #f1f1f1;
     border: none;

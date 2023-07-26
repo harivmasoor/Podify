@@ -103,6 +103,8 @@ function onSuccessfulLogin() {
     document.getElementById('currentTime').style.display = 'block'; // removed '#'
     document.getElementById('totalTime').style.display = 'block'; // corrected capitalization to match HTML ID
     document.getElementById('transcriptionBox').style.display = 'block';
+    document.getElementById('mute').style.display = 'block';
+    document.getElementById('muteContainer').style.display = 'block';
     
     
     // Removed the line for '.player-controls' as it doesn't match any class in the provided HTML.

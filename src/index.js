@@ -82,6 +82,8 @@ player.setVolume(0.001).then(() => {
     console.log('Volume updated!');
   });
 }
+
+//test
 function onSuccessfulLogin() {
     // Display the current image, Spotify logo, and web player
     // document.getElementById('currentImage').style.display = 'block';

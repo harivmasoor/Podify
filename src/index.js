@@ -290,9 +290,12 @@ document.addEventListener('DOMContentLoaded', function() {
     evtSource.onmessage = function(event) {
         const data = JSON.parse(event.data);
         const transcriptionBox = document.getElementById('transcriptionBox');
-        transcriptionBox.value = data;
+        
+        // Append the new transcription to the existing content
+        transcriptionBox.value += data.transcript + "\n"; // Adding a newline for separation
     }
 });
+
 
 // Initialize the event listeners
 initializeEventListeners();

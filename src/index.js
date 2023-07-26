@@ -136,6 +136,7 @@ function initializeEventListeners() {
     // initializeAudioCapture();  
 }
 
+//test
 // The main code that runs when the window loads
 window.addEventListener('load', () => {
     const hash = window.location.hash.substring(1);

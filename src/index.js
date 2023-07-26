@@ -77,6 +77,7 @@ function fastForwardTrack() {
     });
 }
 function mute() {
+    console.log('Mute button clicked!');
 player.setVolume(0).then(() => {
     console.log('Volume updated!');
   });

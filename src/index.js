@@ -1,7 +1,7 @@
 // Description: The main JavaScript file for the Podify web app.
 import { setupSearch } from './searchBar.js';
 import { setupWebPlayer, checkWebPlaybackSDKCompatibility } from './webPlayer.js';
-import { initializeAudioCapture } from './audioCapture.js';
+// import { initializeAudioCapture } from './audioCapture.js';
 
 
 let updateSeekBarInterval;  // Declare the variable at a scope accessible by all your functions

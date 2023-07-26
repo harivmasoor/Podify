@@ -102,6 +102,7 @@ function onSuccessfulLogin() {
     document.getElementById('seekBarContainer').style.display = 'flex';
     document.getElementById('currentTime').style.display = 'block'; // removed '#'
     document.getElementById('totalTime').style.display = 'block'; // corrected capitalization to match HTML ID
+    document.getElementById('transcriptionBox').style.display = 'block';
     
     // Removed the line for '.player-controls' as it doesn't match any class in the provided HTML.
     

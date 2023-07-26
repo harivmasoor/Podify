@@ -76,7 +76,11 @@ function fastForwardTrack() {
         }
     });
 }
-
+function mute() {
+player.setVolume(0).then(() => {
+    console.log('Volume updated!');
+  });
+}
 function onSuccessfulLogin() {
     // Display the current image, Spotify logo, and web player
     // document.getElementById('currentImage').style.display = 'block';
@@ -127,6 +131,7 @@ function initializeEventListeners() {
     document.getElementById('playPause').addEventListener('click', togglePlay);
     document.getElementById('rewind').addEventListener('click', rewindTrack);
     document.getElementById('fastForward').addEventListener('click', fastForwardTrack);
+    document.getElementById('mute').addEventListener('click', mute);
     // initializeAudioCapture();  
 }
 

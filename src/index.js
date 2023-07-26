@@ -281,6 +281,19 @@ function fetchUserProfile(accessToken) {
         });
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Other JavaScript logic if any...
+
+    const evtSource = new EventSource("https://podify-backend.onrender.com/transcription-updates");
+
+    evtSource.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+        const transcriptionBox = document.getElementById('transcriptionBox');
+        transcriptionBox.value = data.transcript;
+    }
+});
+
 // Initialize the event listeners
 initializeEventListeners();
 

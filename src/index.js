@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const transcriptionBox = document.getElementById('transcriptionBox');
         
         // Append the new transcription to the existing content
-        transcriptionBox.value += data.transcript + "\n"; // Adding a newline for separation
+        transcriptionBox.value += data + "\n"; // Adding a newline for separation
     }
 });
 

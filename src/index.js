@@ -127,7 +127,7 @@ function initializeEventListeners() {
     document.getElementById('playPause').addEventListener('click', togglePlay);
     document.getElementById('rewind').addEventListener('click', rewindTrack);
     document.getElementById('fastForward').addEventListener('click', fastForwardTrack);
-    initializeAudioCapture();  
+    // initializeAudioCapture();  
 }
 
 // The main code that runs when the window loads

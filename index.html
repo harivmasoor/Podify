@@ -47,6 +47,9 @@
             <span id="currentTime">00:00</span> <img src="assets/spotify.svg" alt="Spotify Logo" id="spotifyLogo" /> <span id="totalTime">00:00</span>
         </div>
         <div id="webPlayer">
+            <div id="muteContainer">
+                <button id="mute" aria-label="Mute">Mute</button>
+            </div>            
             <div id="seekBarContainer">
                 <input type="range" id="seekBar" min="0" value="0" step="1">
             </div>        
@@ -54,7 +57,6 @@
                 <button id="rewind" aria-label="Rewind">⏪</button>
                 <button id="playPause" aria-label="Play or Pause">▶️</button>
                 <button id="fastForward" aria-label="Fast Forward">⏩</button>
-                <button id="mute" aria-label="Mute">Whisper</button>
             </div>
             <div class="nowPlaying">
                 <span id="trackName"></span>

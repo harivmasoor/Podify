@@ -14,7 +14,8 @@
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-
+    padding-right: 50px;
+    border: none;
     /* Your existing styles for transcriptionBox */
     width: 20%; /* Adjust width to your preference */
     background: transparent;

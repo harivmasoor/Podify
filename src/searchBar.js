@@ -67,15 +67,15 @@ async function searchSpotify(query) {
     }
 
     // Extract and structure data for artists
-    // if (data.artists && data.artists.items) {
-    //   artistResults = data.artists.items.map(item => ({
-    //       type: 'artist',
-    //       id: item.id,
-    //       name: item.name,
-    //       image: item.images[0] ? item.images[0].url : null,
-    //       popularity: item.popularity
-    //   }));
-    // }
+    if (data.artists && data.artists.items) {
+      artistResults = data.artists.items.map(item => ({
+          type: 'artist',
+          id: item.id,
+          name: item.name,
+          image: item.images[0] ? item.images[0].url : null,
+          popularity: item.popularity
+      }));
+    }
     
     if (data.episodes && data.episodes.items) {
       episodeResults = data.episodes.items.map(item => ({

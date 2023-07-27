@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // const socket = new WebSocket('ws://YOUR_BACKEND_URL/transcription');
 
-// socket.onopen = function (event) {
+// socket.onopen = function (event) {dd
 //     console.log("WebSocket is open now.");
 //     socket.send("Start Listening for transcription");  // You can send a message to start listening
 // };

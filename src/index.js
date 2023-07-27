@@ -169,7 +169,8 @@ function initializeEventListeners() {
     document.getElementById('playPause').addEventListener('click', togglePlay);
     document.getElementById('rewind').addEventListener('click', rewindTrack);
     document.getElementById('fastForward').addEventListener('click', fastForwardTrack);
-    document.getElementById('mute').addEventListener('click', mute);
+    document.getElementById('mute').addEventListener('click', toggleMute);
+
     // initializeAudioCapture();  
 }
 
@@ -228,9 +229,20 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         }
         isPlaying = !state.paused;
         if (isPlaying) {
-            document.getElementById('playPause').textContent = '⏸️';
+            document.getElementById('playPause').textContent =  `
+            <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="25" cy="25" r="23" stroke="black" stroke-width="2" fill="none"/>
+                <rect x="18" y="15" width="5" height="20" fill="black"/>
+                <rect x="27" y="15" width="5" height="20" fill="black"/>
+            </svg>
+        `;
         } else {
-            document.getElementById('playPause').textContent = '▶️';
+            document.getElementById('playPause').textContent =  `
+            <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="25" cy="25" r="23" stroke="black" stroke-width="2" fill="none"/>
+                <path d="M 20 15 L 20 35 L 35 25 L 20 15" fill="black"/>
+            </svg>
+        `;
         }
     });
 

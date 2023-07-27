@@ -176,11 +176,6 @@ function appendResultToContainer(result, container) {
 
 
 async function handleResultClick(e) {
-
-    // Hide search results dropdown
-  const searchResults = document.getElementById('searchResults');
-  searchResults.style.display = 'none';
-
   const type = e.currentTarget.dataset.type;
   const id = e.currentTarget.dataset.id;
 
@@ -189,9 +184,14 @@ async function handleResultClick(e) {
   } else if (type === 'show') {
     await getShowEpisodes(id);
   } else if (type === 'track' || type === 'episode') {
+    // Hide search results dropdown only when a track or episode is chosen
+    const searchResults = document.getElementById('searchResults');
+    searchResults.style.display = 'none';
+    
     playItem(id, type);
   }
 }
+
 
 
 

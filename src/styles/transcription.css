@@ -6,7 +6,6 @@
     width: 80%;
     margin: auto;
     gap: 25px; /* Spacing between elements */
-    flex: 3;
 }
 #transcriptionBox {
     display: none;
@@ -21,6 +20,10 @@
     position: relative;
     padding-bottom: 20px; /* or any value you prefer */
     transition: all 0.3s ease; /* smooth transition for height changes */
-    flex: 1;
+
+    /* Add these */
+    max-height: 50vh; /* Sets a maximum height; adjust as needed */
+    overflow-y: auto; /* Adds scrollbar if content goes beyond max height */
 }
+
 

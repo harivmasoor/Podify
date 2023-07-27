@@ -108,7 +108,7 @@ function onSuccessfulLogin() {
     
     
     // Removed the line for '.player-controls' as it doesn't match any class in the provided HTML.
-    
+    //test
 }
 
 // Initialize all event listeners
@@ -324,3 +324,4 @@ initializeEventListeners();
 
 
 
+//test

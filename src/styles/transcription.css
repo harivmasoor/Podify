@@ -11,9 +11,14 @@
 
 #transcriptionBox {
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    padding: 10px;
-    border: 1px solid #ccc;
+    background: transparent;
+    color: #000;
+    flex: 1;
+    height: 300px;
+    font-size: 30px;
+    font-weight: bolder
+    /* padding: 10px; */
+    /* border: 1px solid #ccc; */
     border-radius: 8px;
     width: 100%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);

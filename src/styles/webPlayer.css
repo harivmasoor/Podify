@@ -47,7 +47,7 @@
     display: none;
     margin-top: 50px;
     width: 300px;  /* Adjust to your desired width */
-    height: 300px; /* Adjust to your desired height */
+    height: auto; /* Adjust to your desired height */
     object-fit: cover;  /* Keeps the aspect ratio of the image intact */
     border-radius: 5px;
     margin: 15px 0;
@@ -108,9 +108,9 @@
 
 #currentlyPlaying {
     display: flex;
-    flex-direction: column;
-    align-items: center;  /* centers children horizontally */
-    justify-content: center; /* centers children vertically, if you want */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    gap: 20px; /* Adjust as needed for spacing between image and transcription box */
 }
 
 #currentImage, #currentTitle {

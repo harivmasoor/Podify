@@ -100,7 +100,7 @@ async function searchSpotify(query) {
 //     name: item.name,
 //     image: item.images[0]?.url || '', // Use the first image or an empty string as a fallback
 //   })));
-// }
+// }///zzz
 
 
     // Sort tracks and artists by popularity

@@ -54,7 +54,13 @@
                 <input type="range" id="seekBar" min="0" value="0" step="1">
             </div>        
             <div class="playerControls">
-                <button id="rewind" aria-label="Rewind">⏪</button>
+                <button id="rewind" aria-label="Rewind">
+                    <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="25" cy="25" r="23" stroke="black" stroke-width="2" fill="none"/>
+                        <path d="M 30 15 L 15 25 L 30 35 L 30 15" fill="black"/>
+                        <path d="M 20 15 L 5 25 L 20 35 L 20 15" fill="black"/>
+                    </svg>                    
+                </button>
                 <button id="playPause" aria-label="Play or Pause"><button id="playPause" aria-label="Play or Pause">
                     <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="25" cy="25" r="23" stroke="black" stroke-width="2" fill="none"/>
@@ -62,7 +68,13 @@
                     </svg>
                 </button>
                 </button>
-                <button id="fastForward" aria-label="Fast Forward">⏩</button>
+                <button id="fastForward" aria-label="Fast Forward">
+                    <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="25" cy="25" r="23" stroke="black" stroke-width="2" fill="none"/>
+                        <path d="M 20 15 L 35 25 L 20 35 L 20 15" fill="black"/>
+                        <path d="M 30 15 L 45 25 L 30 35 L 30 15" fill="black"/>
+                    </svg>                    
+                </button>
             </div>
             <div class="nowPlaying">
                 <span id="trackName"></span>

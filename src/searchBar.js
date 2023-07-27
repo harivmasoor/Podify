@@ -227,7 +227,7 @@ async function getArtistTopTracks(artistId) {
 
 
 async function getShowEpisodes(showId) {
-  const episodesEndpoint = `https://api.spotify.com/v1/shows/${showId}/episodes?market=US&limit=10`;
+  const episodesEndpoint = `https://api.spotify.com/v1/shows/${showId}/episodes?market=US&limit=5`;
   const headers = {
     'Authorization': `Bearer ${accessToken}`,
     'Content-Type': 'application/json',

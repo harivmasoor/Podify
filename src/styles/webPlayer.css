@@ -146,4 +146,18 @@
     background-color: #ddd;
 }
 
+#playPause {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f1f1f1;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#playPause:hover {
+    background-color: #ddd;
+}
+
 /* NPM

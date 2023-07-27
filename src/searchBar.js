@@ -85,22 +85,22 @@ async function searchSpotify(query) {
           image: item.images[0].url
       }));
     }
-    // if (data.shows && data.shows.items) {
-    //   showResults.push(...data.shows.items.map(item => ({
-    //     type: 'show',
-    //     id: item.id,
-    //     name: item.name,
-    //     image: item.images[0]?.url || '',
-    //   })));
-    // }
-    if (data.artists && data.artists.items) {
-  artistResults.push(...data.artists.items.map(item => ({
-    type: 'artist',
-    id: item.id,
-    name: item.name,
-    image: item.images[0]?.url || '', // Use the first image or an empty string as a fallback
-  })));
-}
+    if (data.shows && data.shows.items) {
+      showResults.push(...data.shows.items.map(item => ({
+        type: 'show',
+        id: item.id,
+        name: item.name,
+        image: item.images[0]?.url || '',
+      })));
+    }
+//     if (data.artists && data.artists.items) {
+//   artistResults.push(...data.artists.items.map(item => ({
+//     type: 'artist',
+//     id: item.id,
+//     name: item.name,
+//     image: item.images[0]?.url || '', // Use the first image or an empty string as a fallback
+//   })));
+// }
 
 
     // Sort tracks and artists by popularity

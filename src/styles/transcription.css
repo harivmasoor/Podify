@@ -11,6 +11,7 @@
 }
 
 #transcriptionBox {
+    padding: 10px;  /* Adjust as needed */
     border-radius: 40px;
     position: absolute;
     top: 50%;

@@ -108,9 +108,10 @@
 
 #currentlyPlaying {
     display: flex;
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
-    gap: 20px; /* Adjust as needed for spacing between image and transcription box */
+    flex-direction: column; /* Stacks child elements vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    gap: 20px; /* Adjust as needed for spacing between image and track name */
 }
 
 #currentImage, #currentTitle {

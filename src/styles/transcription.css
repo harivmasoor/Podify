@@ -21,6 +21,9 @@
     width: 20%; /* Adjust width to your preference */
     height: 50%;
     background: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+    font-weight: bolder;
     resize: none; 
     z-index: 9999; /* Ensures it's on top of other content */
 }

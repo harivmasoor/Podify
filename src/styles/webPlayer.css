@@ -188,4 +188,15 @@
     background-color: #ddd;
 }
 
-/* NPM
+#footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #f7f7f7;
+}
+
+.footer-icon {
+    width: 32px;  /* Adjust this to your preferred size */
+    height: 32px; /* Adjust this to your preferred size */
+    margin: 0 100px; /* Increased space between the icons to 30px */
+    vertical-align: middle;
+}

@@ -5,6 +5,7 @@ main {
     justify-content: flex-end; /* Start content from the bottom */
     height: calc(100vh - 90px); /* Adjusting the height to account for the header */
     padding: 2% 0;
+    position: relative;
 }
 
 /* Styles for the login button */

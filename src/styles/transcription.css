@@ -10,10 +10,10 @@
 }
 
 #transcriptionBox {
-    position: fixed;
-    right: 10px; /* Adjust to set distance from the right edge of the screen */
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%); /* This will center it vertically */
+    right: 0;
+    transform: translateY(-50%);
 
     /* Your existing styles for transcriptionBox */
     width: 20%; /* Adjust width to your preference */

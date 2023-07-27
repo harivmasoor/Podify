@@ -98,3 +98,7 @@ input:-webkit-autofill {
     display: flex;  /* Use flexbox for aligning content */
     align-items: center;  /* Vertically center content */
 }
+
+.resultHeader {
+    padding-left: 3%;
+}

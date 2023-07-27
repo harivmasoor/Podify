@@ -204,4 +204,6 @@
     height: 32px; /* Adjust this to your preferred size */
     margin: 0 100px; /* Increased space between the icons to 30px */
     vertical-align: middle;
+    justify-content: center;
+    align-content: center;
 }

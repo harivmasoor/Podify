@@ -92,7 +92,7 @@ input:-webkit-autofill {
 
 #searchResults div, 
 .resultItem {
-    padding-left: 10%;  /* Shift content to the right */
+    padding-left: 4%;  /* Shift content to the right */
     cursor: pointer;
     border-bottom: 1px solid #eee;
     display: flex;  /* Use flexbox for aligning content */

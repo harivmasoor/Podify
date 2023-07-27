@@ -200,6 +200,7 @@
     display: flex;  /* Make footer a flex container */
     justify-content: center;  /* Center children horizontally */
     align-items: center;  /* Center children vertically */
+    padding-right: 30px;
 }
 
 

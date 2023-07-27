@@ -7,6 +7,11 @@ Ever wished you could pair your favorite tunes with real-time lyrics or that pod
 
 - **Instant Spotify Connect**: Jump right in using your Spotify account.
 
+<p align="left" style="padding-top: 50px; padding-bottom: 50px;"> 
+    <img src="assets/login.png" alt="show-page" width="500" style="border-radius: 15px;"/>
+</p>
+
+
 
 - **Dynamic Search Bar**: Why wait? Get real-time suggestions from Spotify's treasure trove of content.
 - **Listen & Watch**: Play content in our snazzy media player, and see words come alive on your screen.

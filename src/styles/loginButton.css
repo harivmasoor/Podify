@@ -6,6 +6,7 @@ main {
     justify-content: space-between; 
     height: calc(100vh - 90px); /* Adjusting the height to account for the header */
     padding: 2% 0;
+    height: 100vh;
 }
 
 /* Styles for the login button */

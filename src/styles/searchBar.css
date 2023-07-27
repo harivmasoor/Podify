@@ -87,5 +87,7 @@ input:-webkit-autofill {
 
 #search-container {
     display: block !important;
+    width: 100%;
 }
+
 

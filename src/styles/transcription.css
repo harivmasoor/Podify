@@ -22,7 +22,7 @@
     height: 50%;
     background: transparent;
     font-family: 'Poppins', sans-serif;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: bolder;
     resize: none; 
     z-index: 9999; /* Ensures it's on top of other content */

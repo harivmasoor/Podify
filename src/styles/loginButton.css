@@ -1,12 +1,10 @@
-
 main {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse; /* Change the order so transcriptionBox is at the bottom */
     align-items: center;
-    justify-content: space-between; 
+    justify-content: flex-end; /* Start content from the bottom */
     height: calc(100vh - 90px); /* Adjusting the height to account for the header */
     padding: 2% 0;
-    height: 100vh;
 }
 
 /* Styles for the login button */
@@ -52,9 +50,10 @@ header {
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif; /* Set Poppins as the primary font */
     background-color: #f4f4f4; /* Adding a light gray background to enhance visibility */
 }
+
 
 
 #logo {
@@ -72,8 +71,3 @@ body, html {
 
 
 
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif; /* Set Poppins as the primary font */
-}

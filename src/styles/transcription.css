@@ -1,4 +1,5 @@
 
+
 #contentWrapper {
     display: flex;
     flex-direction: column;
@@ -7,8 +8,8 @@
     margin: auto;
     gap: 25px; /* Spacing between elements */
 }
+
 #transcriptionBox {
-    display: none;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     padding: 10px;
@@ -17,13 +18,10 @@
     width: 100%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     resize: vertical;
-    position: relative;
-    padding-bottom: 20px; /* or any value you prefer */
-    transition: all 0.3s ease; /* smooth transition for height changes */
-
-    /* Add these */
-    max-height: 50vh; /* Sets a maximum height; adjust as needed */
-    overflow-y: auto; /* Adds scrollbar if content goes beyond max height */
+    padding-bottom: 20px;
+    transition: all 0.3s ease;
+    max-height: 50vh; 
+    overflow-y: auto; 
 }
 
 

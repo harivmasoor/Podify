@@ -37,22 +37,38 @@ function renderUsername(username) {
 
 // Playback control functions
 function togglePlay() {
+    var playSVG = `
+        <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="25" cy="25" r="23" stroke="black" stroke-width="2" fill="none"/>
+            <path d="M 20 15 L 20 35 L 35 25 L 20 15" fill="black"/>
+        </svg>
+    `;
+
+    var pauseSVG = `
+        <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="25" cy="25" r="23" stroke="black" stroke-width="2" fill="none"/>
+            <rect x="18" y="15" width="5" height="20" fill="black"/>
+            <rect x="27" y="15" width="5" height="20" fill="black"/>
+        </svg>
+    `;
+
     if (isPlaying) {
         player.pause().then(() => {
             console.log('Paused Playback');
             isPlaying = false;
-            document.getElementById('playPause').textContent = '▶️';
+            document.getElementById('playPause').innerHTML = playSVG;
             clearInterval(updateSeekBarInterval);  // Stop updating the seek bar
         });
     } else {
         player.resume().then(() => {
             console.log('Resumed Playback');
             isPlaying = true;
-            document.getElementById('playPause').textContent = '⏸️';
+            document.getElementById('playPause').innerHTML = pauseSVG;
             updateSeekBarInterval = setInterval(updateSeekBar, 1000);  // Resume updating the seek bar
         });
     }
 }
+
 
 
 function rewindTrack() {

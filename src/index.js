@@ -358,6 +358,21 @@ transcriptionBox.addEventListener('input', function() {
     }
 });
 
+let lastScrollTop = 0;
+
+window.addEventListener("scroll", function() {
+   let currentScroll = window.scrollY;
+   if (currentScroll > lastScrollTop){
+       // Scrolling down
+       document.getElementById("footer").style.transform = 'translateY(100%)';
+   } else {
+       // Scrolling up
+       document.getElementById("footer").style.transform = 'translateY(0)';
+   }
+   lastScrollTop = currentScroll;
+}, false);
+
+
 // Initialize the event listeners
 initializeEventListeners();
 

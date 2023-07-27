@@ -7,15 +7,28 @@ Ever wished you could pair your favorite tunes with real-time lyrics or that pod
 
 - **Instant Spotify Connect**: Jump right in using your Spotify account.
 
-<p align="left" style="padding-top: 50px; padding-bottom: 50px;"> 
+<p align="center" style="padding-top: 50px; padding-bottom: 50px;"> 
     <img src="assets/login.png" alt="show-page" width="500" style="border-radius: 15px;"/>
 </p>
 
 
 
 - **Dynamic Search Bar**: Why wait? Get real-time suggestions from Spotify's treasure trove of content.
+
+<p align="center" style="padding-top: 50px; padding-bottom: 50px;"> 
+    <img src="assets/searchbar.png" alt="show-page" width="500" style="border-radius: 15px;"/>
+</p>
+
 - **Listen & Watch**: Play content in our snazzy media player, and see words come alive on your screen.
+
+<p align="center" style="padding-top: 50px; padding-bottom: 50px;"> 
+    <img src="assets/transcribe.png" alt="show-page" width="500" style="border-radius: 15px;"/>
+</p>
 - **Tab No-Stop Audio**: Switch tabs, mute, or even turn off your speakers. We've got you covered! Your transcription goes on, uninterrupted.
+
+<p align="center" style="padding-top: 50px; padding-bottom: 50px;"> 
+    <img src="assets/tabSwitch.png" alt="show-page" width="500" style="border-radius: 15px;"/>
+</p>
 
 ## **Under the Hood:**
 

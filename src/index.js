@@ -76,12 +76,27 @@ function fastForwardTrack() {
         }
     });
 }
-function mute() {
+let isMuted = false;  // This variable will track if the audio is muted or not
+
+function toggleMute() {
     console.log('Mute button clicked!');
-player.setVolume(0.001).then(() => {
-    console.log('Volume updated!');
-  });
+    if (isMuted) {
+        player.setVolume(0.5).then(() => {
+            console.log('Volume updated to 0.5!');
+            document.getElementById('mute').innerText = "Mute";  // Update button text
+        });
+    } else {
+        player.setVolume(0.001).then(() => {
+            console.log('Volume muted!');
+            document.getElementById('mute').innerText = "Unmute";  // Update button text
+        });
+    }
+    isMuted = !isMuted;  // Toggle the isMuted variable
 }
+
+// Attach the function to your button
+document.getElementById('mute').addEventListener('click', toggleMute);
+
 
 //test
 function onSuccessfulLogin() {

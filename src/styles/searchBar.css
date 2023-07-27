@@ -90,4 +90,11 @@ input:-webkit-autofill {
     width: 30%;
 }
 
-
+#searchResults div, 
+.resultItem {
+    padding-left: 10%;  /* Shift content to the right */
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    display: flex;  /* Use flexbox for aligning content */
+    align-items: center;  /* Vertically center content */
+}

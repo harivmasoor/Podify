@@ -10,23 +10,16 @@
 }
 
 #transcriptionBox {
-    font-family: 'Poppins', sans-serif;
+    position: fixed;
+    right: 10px; /* Adjust to set distance from the right edge of the screen */
+    top: 50%;
+    transform: translateY(-50%); /* This will center it vertically */
+
+    /* Your existing styles for transcriptionBox */
+    width: 20%; /* Adjust width to your preference */
     background: transparent;
-    color: #000;
-    flex: 1;
-    height: 300px;
-    font-size: 30px;
-    font-weight: bolder
-    /* padding: 10px; */
-    /* border: 1px solid #ccc; */
-    border-radius: 8px;
-    width: 100%;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    resize: vertical;
-    padding-bottom: 20px;
-    transition: all 0.3s ease;
-    max-height: 50vh; 
-    overflow-y: auto; 
+    z-index: 9999; /* Ensures it's on top of other content */
 }
+
 
 

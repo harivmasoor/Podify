@@ -306,6 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Append the new transcription to the existing content
         transcriptionBox.value += data + "\n"; // Adding a newline for separation
+        transcriptionBox.scrollTop = transcriptionBox.scrollHeight; // Scroll to the bottom
     }
 });
 

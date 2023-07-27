@@ -176,6 +176,11 @@ function appendResultToContainer(result, container) {
 
 
 async function handleResultClick(e) {
+
+    // Hide search results dropdown
+  const searchResults = document.getElementById('searchResults');
+  searchResults.style.display = 'none';
+
   const type = e.currentTarget.dataset.type;
   const id = e.currentTarget.dataset.id;
 

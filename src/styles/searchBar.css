@@ -37,7 +37,7 @@ input:-webkit-autofill {
     max-height: 300px;
     overflow-y: auto;
     position: absolute;
-    top: 35px;
+    top: 80px;
     left: 0;
     /* border: 1px solid #ccc; */
     border-radius: 5px;

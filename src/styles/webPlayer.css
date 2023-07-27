@@ -27,6 +27,7 @@
     color: #1DB954; /* Spotify green color */
     transition: color 0.3s;
     justify-content: space-evenly;
+    padding: 5px; /*
 }
 
 .playerControls button:hover {

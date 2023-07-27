@@ -133,7 +133,7 @@ function displayResults(results) {
 if (artistResults.length > 0) {
   const geniusHeader = document.createElement('h2');
   geniusHeader.textContent = 'Geniuses';
-  podHeader.classList.add('resultHeader');
+  geniusHeader.classList.add('resultHeader');
   resultsContainer.appendChild(geniusHeader);
 
   artistResults.forEach(result => appendResultToContainer(result, resultsContainer));
@@ -142,7 +142,7 @@ if (artistResults.length > 0) {
 if (showResults.length > 0) {
   const mogulHeader = document.createElement('h2');
   mogulHeader.textContent = 'Moguls';
-  podHeader.classList.add('resultHeader');
+  mogulHeader.classList.add('resultHeader');
   resultsContainer.appendChild(mogulHeader);
 
   showResults.forEach(result => appendResultToContainer(result, resultsContainer));
@@ -159,7 +159,7 @@ if (showResults.length > 0) {
   if (trackResults.length > 0) {
     const bangerHeader = document.createElement('h2');
     bangerHeader.textContent = 'Bangers';
-    podHeader.classList.add('resultHeader');
+    bangerHeader.classList.add('resultHeader');
     resultsContainer.appendChild(bangerHeader);
 
     trackResults.forEach(result => appendResultToContainer(result, resultsContainer));

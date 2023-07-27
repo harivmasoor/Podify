@@ -40,4 +40,23 @@
     outline: none;
 }
 
+#transcriptionBox {
+    padding-right: 15px; /* add space for the scrollbar */
+    box-sizing: border-box; /* ensures padding doesn't expand the box */
+}
 
+#transcriptionBox::-webkit-scrollbar {
+    width: 10px; /* adjust this value as needed for the width of the scrollbar */
+}
+
+#transcriptionBox::-webkit-scrollbar-track {
+    background: #f1f1f1; /* adjust this value as needed for the track background color */
+}
+
+#transcriptionBox::-webkit-scrollbar-thumb {
+    background: #888; /* adjust this value as needed for the thumb color */
+}
+
+#transcriptionBox::-webkit-scrollbar-thumb:hover {
+    background: #555; /* adjust this value as needed for the thumb color on hover */
+}

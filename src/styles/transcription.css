@@ -30,5 +30,14 @@
     z-index: 9999; /* Ensures it's on top of other content */
 }
 
+@media (max-width: 768px) {
+    #transcriptionBox {
+        display: none;
+    }
+}
+
+#transcriptionBox:focus {
+    outline: none;
+}
 
 

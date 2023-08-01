@@ -42,7 +42,7 @@ input:-webkit-autofill {
     /* border: 1px solid #ccc; */
     border-radius: 5px;
     background-color: #fff;
-    z-index: 1000;
+    z-index: 9100;
     /* font-family: 'Arial Rounded MT Bold', sans-serif; */
     transition: opacity 0.3s, visibility 0.3s; /* Add transition */
 }

@@ -136,6 +136,7 @@ function onSuccessfulLogin() {
     document.getElementById('transcriptionBox').style.display = 'block';
     document.getElementById('mute').style.display = 'flex';
     document.getElementById('muteContainer').style.display = 'flex';
+    document.getElementById('extensionInstructions').style.display = 'block';
     
     
     // Removed the line for '.player-controls' as it doesn't match any class in the provided HTML.

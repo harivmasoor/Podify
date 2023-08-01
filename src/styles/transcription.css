@@ -60,3 +60,45 @@
 #transcriptionBox::-webkit-scrollbar-thumb:hover {
     background: #555; /* adjust this value as needed for the thumb color on hover */
 }
+
+#extensionInstructions {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    font-family: 'Poppins', sans-serif;
+}
+
+#extensionInstructions h3 {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+#extensionInstructions ol {
+    padding-left: 20px;
+}
+
+#extensionInstructions li {
+    margin-bottom: 10px;
+}
+
+#extensionInstructions a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+#extensionInstructions a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    #extensionInstructions {
+        display: none;
+    }
+}

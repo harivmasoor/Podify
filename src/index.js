@@ -376,6 +376,3 @@ window.addEventListener("scroll", function() {
 // Initialize the event listeners
 initializeEventListeners();
 
-
-
-//testsssssssssssssssdsafdsdf

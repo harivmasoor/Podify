@@ -62,7 +62,6 @@ export async function playItem(itemId, itemType) {
     }
 
     try {
-        console.log("Attempting to play", body);
         const response = await fetchWithRetry(endpoint, {
             method: 'PUT',
             headers: headers,
@@ -75,7 +74,6 @@ export async function playItem(itemId, itemType) {
             throw new Error(`Unable to play ${itemType}: ${response.statusText}`);
         }
 
-        console.log(`Successfully started playing ${itemType} with ID: ${itemId}`);
     } catch (error) {
         console.error('Error in web player:', error);
         handlePlaybackError(error);

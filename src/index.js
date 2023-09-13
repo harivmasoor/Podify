@@ -54,14 +54,12 @@ function togglePlay() {
 
     if (isPlaying) {
         player.pause().then(() => {
-            console.log('Paused Playback');
             isPlaying = false;
             document.getElementById('playPause').innerHTML = playSVG;
             clearInterval(updateSeekBarInterval);  // Stop updating the seek bar
         });
     } else {
         player.resume().then(() => {
-            console.log('Resumed Playback');
             isPlaying = true;
             document.getElementById('playPause').innerHTML = pauseSVG;
             updateSeekBarInterval = setInterval(updateSeekBar, 1000);  // Resume updating the seek bar
@@ -76,7 +74,6 @@ function rewindTrack() {
         if (state) {
             const newPosition = Math.max(state.position - 15000, 0); // ensure position is not negative
             player.seek(newPosition).then(() => {
-                console.log('Rewound 15 seconds!');
             });
         }
     });
@@ -87,7 +84,6 @@ function fastForwardTrack() {
         if (state) {
             const newPosition = state.position + 15000;
             player.seek(newPosition).then(() => {
-                console.log('Fast-forwarded 15 seconds!');
             });
         }
     });
@@ -95,15 +91,12 @@ function fastForwardTrack() {
 let isMuted = false;  // This variable will track if the audio is muted or not
 
 function toggleMute() {
-    console.log('Mute button clicked!');
     if (isMuted) {
         player.setVolume(0.5).then(() => {
-            console.log('Volume updated to 0.5!');
             document.getElementById('mute').innerText = "Mute";  // Update button text
         });
     } else {
         player.setVolume(0.001).then(() => {
-            console.log('Volume muted!');
             document.getElementById('mute').innerText = "Unmute";  // Update button text
         });
     }
@@ -190,12 +183,6 @@ window.addEventListener('load', () => {
         const searchContainer = document.getElementById('search-container');
         searchContainer.style.display = 'block';
 
-        console.log({
-            access_token: accessToken,
-            token_type: tokenType,
-            expires_in: expiresIn,
-        });
-
         getUserProfile(accessToken);
         setupSearch(accessToken);
         if (checkWebPlaybackSDKCompatibility()) {
@@ -216,7 +203,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     });
 
     player.addListener('player_state_changed', state => {
-        console.log(state);
         if (state) {
             const trackDuration = state.track_window.current_track.duration_ms;
             const currentPosition = state.position;
@@ -242,7 +228,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     });
 
     player.addListener('ready', ({ device_id }) => {
-        console.log('Ready with Device ID', device_id);
 
         updateSeekBarInterval = setInterval(updateSeekBar, 1000);  // Update the seek bar every second
 
@@ -274,7 +259,6 @@ document.getElementById('webPlayer').style.display = 'block';
 document.getElementById('seekBar').addEventListener('input', (e) => {
     const newPosition = e.target.value; // This will be in milliseconds
     player.seek(newPosition).then(() => {
-        console.log(`Moved to ${newPosition} ms`);
     });
 });
 

@@ -37,6 +37,43 @@ Podify's awesomeness is powered by:
 - **Chrome Magic**: Especially crafted for Chrome users. Capture crystal clear audio from any tab.
 - **Whisper API**: Real-time transcription, because waiting is so last year.
 
+## **Coding Glue:**
+```javascript
+async function fetchTranscription() {
+    try {
+        const response = await fetch('https://podify-backend.onrender.com/transcribe');
+        const data = await response.json();
+
+        // Display the data
+        if (data.transcript) {
+            displayTranscription(data);
+        } else {
+            // Handle errors or unexpected response format
+            console.error('Failed to get transcription.');
+        }
+    } catch (error) {
+        console.error('Error fetching transcription:', error);
+    }
+}
+
+
+
+
+function displayTranscription(result) {
+    const transcriptionBox = document.getElementById('transcriptionBox');
+    if (result && result.transcript) {
+        transcriptionBox.value = result.transcript;
+    } else {
+        transcriptionBox.value = "Failed to get transcription.";
+    }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initializeAudioCapture();
+});
+```
+
 ---
 
 **Jump In! Experience Podify & Elevate Your Listening Journey.** 🎧🚀📖
